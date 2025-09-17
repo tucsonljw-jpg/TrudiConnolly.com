@@ -1,138 +1,275 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dream 1</title>
 
-<title>Dream 1</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style>
+    body {
+      background-color: #EEEEEE;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
 
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+    a:link,
+    a:visited,
+    a:active {
+      text-decoration: none;
+      color: #3E4A5E;
+    }
 
-<style type="text/css">
-<!--
-a:link {
-	text-decoration: none;
-	color: #506A7A;
-}
+    a:hover {
+      color: #D93A2F;
+      border-bottom-color: #3E4A5E;
+    }
 
-a:visited {
-	text-decoration: none;
-	color: #506A7A;
-}
+    .series-title {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: #D93A2F;
+      letter-spacing: 0.4px;
+      margin-top: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
 
-a:active {
-	text-decoration: none
-}
+    .artwork-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 2.25rem;
+      color: #000;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
 
-a:hover {
-	text-decoration: none;
-	color: #ccccff;
-}
+    .artwork-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: #6C6C6C;
+      letter-spacing: 0.2px;
+      margin-bottom: 1.5rem;
+    }
 
-.style1 {
-	color: #506A7A;
-}
+    .caption {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #2F2F2F;
+      max-width: 720px;
+      text-align: center;
+      margin: 2rem auto 1rem;
+    }
 
-.style2 {
-	color: #666666
-}
+    .fullres-link a {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #3E4A5E;
+      text-decoration: none;
+      border-bottom: 1px solid #D93A2F;
+      transition: color 0.2s ease;
+    }
 
-.style3 {
-	color: #003333;
-	font-weight: bold;
-}
+    .gallery-index a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #3E4A5E;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
 
-.style4 {
-	color: #a04000;
-	font-weight: bold;
-}
--->
-</style>
+    .gallery-index a:hover {
+      color: #D93A2F;
+      border-bottom-color: #D93A2F;
+    }
 
-<meta name="keywords" content="Trudi, Connolly, Tucson, Arizona">
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9A9A9A;
+      padding: 2rem 1rem;
+      font-family: 'Inter', sans-serif;
+    }
 
-<link rel="icon" type="image/png" href="/favicon16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon96x96.png" sizes="96x96">
-<link rel="apple-touch-icon" sizes="72x72" href="touch-ipad.png">
-<link rel="apple-touch-icon" sizes="114x114" href="touch-iphone.png">
-<link rel="apple-touch-icon" sizes="152x152" href="touch-ipad-ret.png">
+    .arrow-container {
+      position: relative;
+      display: inline-block;
+    }
 
-<link rel="manifest" href="/site.webmanifest">
+    .arrow-zone {
+      position: absolute;
+      top: 0;
+      width: 45%;
+      height: 100%;
+      z-index: 4;
+    }
 
+    .left-zone {
+      left: 0;
+    }
+
+    .right-zone {
+      right: 0;
+    }
+
+    .arrow-link {
+      position: absolute;
+      top: 50%;
+      width: 328px;
+      height: 328px;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .arrow-prev {
+      left: -230px;
+    }
+
+    .arrow-next {
+      right: -230px;
+    }
+
+    .left-zone:hover~.arrow-prev,
+    .right-zone:hover~.arrow-next,
+    .arrow-link:hover {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .arrow-button {
+      width: 196px;
+      height: 196px;
+      background-image: url('Nav_Loop.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      position: relative;
+      border-radius: 50%;
+      cursor: pointer;
+      filter: brightness(100%);
+    }
+
+    .arrow-button:hover {
+      filter: brightness(110%);
+      transform: scale(1.05);
+    }
+
+    .arrow-button:hover .arrow-text {
+      opacity: 1;
+    }
+
+    .arrow-text {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #D93A2F;
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .arrow-svg {
+      width: 80px;
+      height: 80px;
+      stroke: #D93A2F;
+    }
+
+    .trudi {
+      font-family: 'Arial', sans-serif;
+      font-size: 4rem;
+      color: #506A7A;
+    }
+
+    .connolly {
+      font-family: 'Verdana', sans-serif;
+      font-size: 4rem;
+      color: #003333;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
+<body>
+  <blockquote>
+    <p align="left">
+      <br><br>
+      <span class="trudi">trudi</span>
+      <span class="connolly">connolly</span>
+      <div class="series-title">Illuminations/Sacred Paper</div>
+    </p>
+  </blockquote>
 
+  <table align="center">
+    <tr>
+      <td align="center" colspan="2">
+        <div class="artwork-title">Dream 1</div>
+        <div class="artwork-meta">Cut Paper | 11x19 inches | 2019</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <br />
+        <div class="arrow-container">
+          <div class="arrow-zone left-zone"></div>
+          <a class="arrow-link arrow-prev" href="Demon_of_History.html">
+            <div class="arrow-button">
+              <span class="arrow-text"></span>
+              <svg class="arrow-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polyline fill="none" points="60,20 30,50 60,80" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" />
+              </svg>
+            </div>
+          </a>
+          <div class="arrow-zone right-zone"></div>
+          <a class="arrow-link arrow-next" href="Ethiopian_Gate.html">
+            <div class="arrow-button">
+              <span class="arrow-text"></span>
+              <svg class="arrow-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <polyline fill="none" points="40,20 70,50 40,80" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" />
+              </svg>
+            </div>
+          </a>
+          <img src="Dream_1_1000.jpg" alt="Dream 1 collage by Trudi Connolly">
+        </div>
 
-<body bgcolor="#EEEEEE" alink="#003333">
+        <p class="caption">
+          A repeating agony and ecstasy since my childhood: a thousand tiny jewel dogs attempt to roll out the door.
+        </p>
 
-	<br>
-	<br>
-	<br>
+        <p class="fullres-link">
+          <a download href="Dream_1.jpg">Full resolution</a>
+        </p>
+      </td>
+    </tr>
+  </table>
 
-	<blockquote>
-		<p align="Left">
-			<span class="style1"><font face="Arial, Helvetica, sans-serif"><font
-					size="8">trudi</font></font></span><span class="style3"><font size="8"><font
-					face="Verdana, Arial, Helvetica, sans-serif">connolly</font></font></span>
-		</p>
-	</blockquote>
+  <blockquote>
+    <p align="left" class="gallery-index">
+      <strong><a href="http://www.trudiconnolly.com/">Gallery Index</a></strong>
+    </p>
+  </blockquote>
 
-	<table>
-
-		<tr>
-			<td><p align="right">&nbsp;</p>
-				<p></p></td>
-		</tr>
-		<tr>
-			<td width="100px" align="center"></td>
-			<td width="1000px" align="center"><span class="style4"><font
-					size="8" face="Verdana, Arial, Helvetica, sans-serif">Dream
-						1 </font></span><span class="style6"><font size="4"
-					face="Verdana, Arial, Helvetica, sans-serif">[11x19 inches]</font> </span></td>
-		</tr>
-		<tr>
-			<td width="100px" align="center"></td>
-			<td width="1000px" align="center"><br> <img
-				src="http://www.trudiconnolly.com/Dream_1_1000.jpg"
-				alt="SCENE MISSING" />
-
-				<p align="center">
-					<span class="style4"><font size="5"><font
-							face="Verdana, Arial, Helvetica, sans-serif">A repeating
-								agony and ecstasy since my childhood: a thousand tiny jewel dogs
-								attempt to roll out the door.</font></font></span>
-				</p></td>
-		</tr>
-		<tr>
-			<td width="100px" align="center"></td>
-			<td width="1000px" align="center"><br>
-				<p align="center">
-					<span class="style4"><a href="Dream_1.jpg" Download Link><font
-							size="4" face="Verdana, Arial, Helvetica, sans-serif">
-								[Download Full Resolution]</font></a><strong></strong></span>
-				</p>
-
-				<p>&nbsp;</p></td>
-
-		</tr>
-
-	</table>
-
-	<blockquote>
-		<p align="left">
-			<span class="style1"><strong><a
-					href="http://www.trudiconnolly.com/"><font size="6"
-						face="Verdana, Arial, Helvetica, sans-serif">index</font></a></strong></span>
-		</p>
-	</blockquote>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
+  <footer>
+    © 2025 Trudi Connolly. All rights reserved. | Image scan available on request.
+  </footer>
 </body>
 
 </html>
