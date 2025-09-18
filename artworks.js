@@ -17,7 +17,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "??×?? inches",   // fill in
     year: "????",
-    caption: "",
+    caption: "Arachne's suicide is less about having been dishonored than about her horror at the gods' disregard for the truth.",
     number: 2
   },
 
@@ -26,7 +26,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "??×?? inches",
     year: "????",
-    caption: "",
+    caption: "Theseus fears her after the orgy.",
     number: 4
   },
 
@@ -35,7 +35,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "??×?? inches",
     year: "????",
-    caption: "",
+    caption: "A wise damsel need not be a martyr to be a painter.",
     number: 15
   },
 
@@ -44,7 +44,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "26×22 inches",
     year: "[UNDATED]",
-    caption: "Rebellion (antique source of inspiration to the Wise Damsel.)",
+    caption: "Victory",
     number: 3
   },
 
@@ -53,7 +53,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "8×16 inches",
     year: "2022–2024",
-    caption: "Early body shaming diminishes access to nerves later in life.",
+    caption: "Early experiences of body shaming diminish access to nerves later in life.",
     number: 20
   },
 
@@ -62,7 +62,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "14×16 inches",
     year: "2018",
-    caption: "A single, ancient source of evil is naive a myth; rather, time is nothing but the grinding down of our bones.",
+    caption: "One single ancient evil is naive; time is nothing but the grinding down of our bones.",
     number: 2
   },
 
@@ -89,21 +89,22 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     number: null
   },
 
-  Etruscan_Urn_for_My_Mothers_Ashes: {
-    title: "Etruscan Urn for My Mothers Ashes",
+  Urn_2: {
+    title: "Urn 2",
     medium: "Cut Paper",
     size: "11×9 inches",
     year: "2018–2019",
-    caption: "Her manner of peace-making with morality.",
+    caption: "My mother's peace with mortality was to be an Etruscan funeral urn.",
     number: 8
   },
 
-  Five_Modalities_of_Conjugal_Felicity: {
-    title: "Five Modalities of Conjugal Felicity",
+  
+ Five_maps_for_happy_marriages : {
+    title: "Five maps for happy marriages",
     medium: "Cut Paper",
     size: "18×27 inches",
     year: "2020",
-    caption: "Distillation of all lovers; Circulation and gravity, Parallel masturbation; One surrounds the other; Integration.",
+    caption: "From upper left: All lovers into one; parallel masturbation; integration; embrace; circulation and gravity.",
     number: 12
   },
 
@@ -116,8 +117,8 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     number: 7
   },
 
-  Interior: {
-    title: "Interior",
+  Dream_2_Interior: {
+    title: "Dream 2: Interior",
     medium: "Cut Paper",
     size: "30×15 inches",
     year: "2021",
@@ -125,12 +126,12 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     number: 19
   },
 
-  Keres: {
-    title: "Keres",
+  Trouble/Toil: {
+    title: "Trouble/Toil",
     medium: "Cut Paper",
     size: "17×14 inches",
     year: "[UNDATED]",
-    caption: "Assembling the parts to raise the devil is a long walk of faith.",
+    caption: "Assembling the ingredients to raise the devil is a long walk of faith.",
     number: 16
   },
 
@@ -171,16 +172,52 @@ We who fixed the sky, who murdered children' s moons, ye, some martyred but more
     medium: "Cut Paper",
     size: "55×78 inches",
     year: "[UNDATED]",
-    caption: "",
+    caption: "The towering city.",
     number: 1
   },
 
   Urns: {
-    title: "Funeral Urns",
+    title: "Urns",
     medium: "Cut Paper",
     size: "12×12 inches",
     year: "2022",
-    caption: "The work of mourning my parents: 1. Compartmentalization; 2. My husband; 3. Independent speech",
+    caption: "The work of mourning my parents: compartmentalization; my husband; speech",
+    number: 18
+  }
+
+    William_Morris: {
+    title: "William Morris",
+    medium: "Cut Paper",
+    size: "12×12 inches",
+    year: "2025",
+    caption: "",
+    number: 18
+  }
+
+    Chairi_Decompression: {
+    title: "Chairi Decompression",
+    medium: "Cut Paper",
+    size: "12×12 inches",
+    year: "202x",
+    caption: "",
+    number: 18
+  }
+
+    Beloved: {
+    title: "Beloved",
+    medium: "Cut Paper",
+    size: "12×12 inches",
+    year: "202x",
+    caption: "",
+    number: 18
+  }
+
+    The_Noonday_Demon: {
+    title: "The Noonday Demon",
+    medium: "Cut Paper",
+    size: "12×12 inches",
+    year: "202x",
+    caption: "",
     number: 18
   }
 };
