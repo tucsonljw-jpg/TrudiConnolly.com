@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Redirecting…</title>
+<style>
+  body{font:16px/1.5 system-ui,Segoe UI,Inter,Arial;margin:0;display:grid;place-items:center;height:100vh;background:#111;color:#fff}
+  .box{max-width:640px;padding:1.25rem 1.5rem;border:1px solid #333;border-radius:.75rem;background:#181818}
+  a{color:#9ad}
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>Redirecting…</h1>
+    <p>If you are not redirected automatically, <a id="link" href="index.html">click here</a>.</p>
+  </div>
+<script>
+(function(){
+  try{
+    // path like /Arachne.html -> slug = "Arachne"
+    var path = location.pathname;
+    var m = path.match(/\/([^\/]+)\.html$/i);
+    if (m && m[1] && !/^index|artwork|404$/i.test(m[1])) {
+      var slug = m[1];
+      var target = 'artwork.html?slug=' + encodeURIComponent(slug);
+      document.getElementById('link').href = target;
+      location.replace(target);
+      return;
+    }
+  }catch(e){}
+  // otherwise go home
+  document.getElementById('link').href = 'index.html';
+})();
+</script>
+</body>
+</html>

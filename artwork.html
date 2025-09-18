@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="doc-title">Artwork — Trudi Connolly</title>
-  <meta name="description" id="meta-desc" content="">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" id="meta-desc" content="" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root { --bg:#eee; --ink:#111; --accent:#d93a2f; --muted:#666; --link:#3e4a5e; }
     *{box-sizing:border-box}
@@ -26,102 +26,87 @@
     .warn{background:#fff3cd;border:1px solid #ffe08a;color:#6b5600;padding:.75rem;border-radius:.5rem}
   </style>
 
-  <!-- Load data FIRST (no module, no defer) so ARTWORKS is guaranteed on window -->
+  <!-- Load data BEFORE script uses it -->
   <script src="artworks.js"></script>
 
   <script>
   (function(){
-    const qs = new URLSearchParams(location.search);
+    const qs   = new URLSearchParams(location.search);
     const slug = qs.get('slug');
 
-    function byTitleAlpha(obj){
-      return Object.entries(obj).map(([slug,d])=>{
-        const title = d.title || slug.replaceAll('_',' ');
-        return { slug, ...d, title, key: title.toLowerCase() };
+    function alpha(list){
+      return Object.entries(list).map(([s,d])=>{
+        const title = d.title || s.replaceAll('_',' ');
+        return {slug:s, ...d, title, key:title.toLowerCase()};
       }).sort((a,b)=>a.key.localeCompare(b.key, undefined, {sensitivity:'base'}));
     }
-    function prevNext(list, slug){
-      const i=list.findIndex(x=>x.slug===slug);
-      if (i<0) return {prev:'#',next:'#'};
-      return {
-        prev:`artwork.html?slug=${encodeURIComponent(list[(i-1+list.length)%list.length].slug)}`,
-        next:`artwork.html?slug=${encodeURIComponent(list[(i+1)%list.length].slug)}`
-      };
+    function neighbors(list, slug){
+      const i = list.findIndex(x=>x.slug===slug);
+      if (i<0) return {prev:'#', next:'#'};
+      const prev = list[(i-1+list.length)%list.length].slug;
+      const next = list[(i+1)%list.length].slug;
+      return { prev:`artwork.html?slug=${encodeURIComponent(prev)}`,
+               next:`artwork.html?slug=${encodeURIComponent(next)}` };
     }
     function setHead(title, meta){
       document.getElementById('doc-title').textContent = `${title} — Trudi Connolly`;
-      document.getElementById('meta-desc').setAttribute('content', (meta?meta+' · ':'') + 'by Trudi Connolly.');
+      document.getElementById('meta-desc').setAttribute('content',(meta?meta+' · ':'')+'by Trudi Connolly.');
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       if (!window.ARTWORKS) {
-        document.body.insertAdjacentHTML('afterbegin',
-          '<div class="warn" style="margin:1rem auto;max-width:960px">artworks.js not found or did not define <code>ARTWORKS</code>.</div>');
+        document.body.insertAdjacentHTML('afterbegin','<div class="warn" style="max-width:960px;margin:1rem auto">Error: artworks.js not found or ARTWORKS undefined.</div>');
         return;
       }
       if (!slug) {
-        document.body.insertAdjacentHTML('afterbegin',
-          '<div class="warn" style="margin:1rem auto;max-width:960px">Missing <code>?slug=…</code>. Open from the <a href="index.html">gallery index</a>.</div>');
+        document.body.insertAdjacentHTML('afterbegin','<div class="warn" style="max-width:960px;margin:1rem auto">Missing <code>?slug=…</code>. Go back to <a href="index.html">index</a>.</div>');
         return;
       }
-
       const data = ARTWORKS[slug];
-      const list = byTitleAlpha(ARTWORKS);
-      const {prev, next} = prevNext(list, slug);
+      const list = alpha(ARTWORKS);
+      const {prev, next} = neighbors(list, slug);
       document.getElementById('prevLink').href = prev;
       document.getElementById('nextLink').href = next;
 
       if (!data) {
-        document.body.insertAdjacentHTML('afterbegin',
-          `<div class="warn" style="margin:1rem auto;max-width:960px">No entry for <b>${slug}</b> in artworks.js.</div>`);
+        document.body.insertAdjacentHTML('afterbegin', `<div class="warn" style="max-width:960px;margin:1rem auto">No entry for <b>${slug}</b> in artworks.js.</div>`);
         return;
       }
 
       const title = data.title || slug.replaceAll('_',' ');
-      const metaLine = [data.medium, data.size, data.year].filter(Boolean).join(' · ');
-      setHead(title, metaLine);
+      const meta  = [data.medium, data.size, data.year].filter(Boolean).join(' · ');
+      setHead(title, meta);
 
-      // Fill fields (hide gracefully when empty)
       document.getElementById('title').textContent = title;
       const $meta = document.getElementById('meta');
-      if (metaLine) $meta.textContent = metaLine; else $meta.style.display='none';
+      if (meta) $meta.textContent = meta; else $meta.style.display = 'none';
 
-      const path = `images/${slug}.jpg`;       // postfix-less image
-      const hero = document.getElementById('hero');
-      hero.src = path; hero.alt = `${title} collage by Trudi Connolly`;
+      const imgPath = `images/${slug}.jpg`;   // postfix-less image
+      const hero    = document.getElementById('hero');
+      hero.src = imgPath; hero.alt = `${title} collage by Trudi Connolly`;
 
       const $cap = document.getElementById('caption');
-      if (data.caption) $cap.textContent = data.caption; else $cap.style.display='none';
+      if (data.caption) $cap.textContent = data.caption; else $cap.style.display = 'none';
 
-      document.getElementById('download').href = path;
-      document.getElementById('viewFull').href =
-        `viewer.html?img=${encodeURIComponent(path)}&title=${encodeURIComponent(title)}`;
+      document.getElementById('viewFull').href = `viewer.html?img=${encodeURIComponent(imgPath)}&title=${encodeURIComponent(title)}`;
+      document.getElementById('download').href = imgPath;
 
-      // Keyboard + swipe nav
-      window.addEventListener('keydown', (e)=>{
-        if (/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName)) return;
-        if (e.key==='ArrowLeft') location.href = prev;
-        if (e.key==='ArrowRight') location.href = next;
-      });
-      let sx=0, sy=0, st=0;
-      const TH=50, REST=120, TIME=800;
-      const surface = document.getElementById('main');
-      surface.addEventListener('touchstart', e=>{const t=e.changedTouches[0]; sx=t.pageX; sy=t.pageY; st=Date.now();},{passive:true});
-      surface.addEventListener('touchend', e=>{
-        const t=e.changedTouches[0], dx=t.pageX-sx, dy=t.pageY-sy, dt=Date.now()-st;
-        if (Math.abs(dx)>=TH && Math.abs(dy)<=REST && dt<=TIME) location.href = dx<0?next:prev;
-      },{passive:true});
+      // keyboard + swipe
+      window.addEventListener('keydown', (e)=>{ if(e.key==='ArrowLeft') location.href=prev; if(e.key==='ArrowRight') location.href=next; });
+      let sx=0, sy=0, st=0; const TH=50, REST=120, TIME=800;
+      const surf=document.getElementById('main');
+      surf.addEventListener('touchstart',e=>{const t=e.changedTouches[0]; sx=t.pageX; sy=t.pageY; st=Date.now();},{passive:true});
+      surf.addEventListener('touchend',e=>{const t=e.changedTouches[0],dx=t.pageX-sx,dy=t.pageY-sy,dt=Date.now()-st;
+        if(Math.abs(dx)>=TH&&Math.abs(dy)<=REST&&dt<=TIME) location.href = dx<0?next:prev;},{passive:true});
     });
   })();
   </script>
 </head>
-
 <body>
   <header>
     <div class="series">Illuminations / Sacred Paper</div>
     <h1 id="title">Artwork</h1>
     <div id="meta" class="meta"></div>
-
     <nav class="toolbar" aria-label="Artwork navigation">
       <a id="prevLink" href="#">← Previous</a>
       <a href="index.html">Gallery Index</a>
@@ -131,10 +116,9 @@
 
   <main id="main">
     <figure>
-      <img id="hero" class="hero" src="" alt="">
+      <img id="hero" class="hero" src="" alt="" />
       <figcaption id="caption"></figcaption>
     </figure>
-
     <div class="toolbar">
       <a id="viewFull" href="#" target="_blank" rel="noopener">View fullscreen</a>
       <a id="download" href="#" download>Download image</a>
