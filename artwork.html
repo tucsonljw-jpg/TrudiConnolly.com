@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="doc-title">Artwork — Trudi Connolly</title>
+  <meta name="description" id="meta-desc" content="">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#eee; --ink:#111; --accent:#d93a2f; --muted:#666; --link:#3e4a5e; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,Segoe UI,Arial,sans-serif}
+    header,main,footer{max-width:960px;margin:0 auto;padding:1rem}
+    header{padding-top:2rem}
+    h1{font:700 2rem/1.2 Inter,sans-serif;margin:.25rem 0}
+    .series{font:italic 1.1rem "Crimson Text",serif;color:var(--accent)}
+    .meta{color:var(--muted);margin:.25rem 0 1rem}
+    .toolbar{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0}
+    .toolbar a{color:var(--link);text-decoration:none;border:1px solid #cfcfcf;border-radius:.5rem;padding:.4rem .7rem}
+    .toolbar a:hover{color:var(--accent);border-color:var(--accent)}
+    figure{margin:1rem 0}
+    img.hero{display:block;max-width:100%;height:auto;border-radius:.5rem;background:#ddd}
+    figcaption{font:italic 1.05rem "Crimson Text",serif;color:#333;margin:.75rem 0 0;white-space:pre-wrap}
+    footer{color:#9a9a9a;font-size:.85rem;text-align:center;padding:2rem 1rem 3rem}
+    .warn{background:#fff3cd;border:1px solid #ffe08a;color:#6b5600;padding:.75rem;border-radius:.5rem}
+  </style>
+
+  <!-- Load data FIRST (no module, no defer) so ARTWORKS is guaranteed on window -->
+  <script src="artworks.js"></script>
+
+  <script>
+  (function(){
+    const qs = new URLSearchParams(location.search);
+    const slug = qs.get('slug');
+
+    function byTitleAlpha(obj){
+      return Object.entries(obj).map(([slug,d])=>{
+        const title = d.title || slug.replaceAll('_',' ');
+        return { slug, ...d, title, key: title.toLowerCase() };
+      }).sort((a,b)=>a.key.localeCompare(b.key, undefined, {sensitivity:'base'}));
+    }
+    function prevNext(list, slug){
+      const i=list.findIndex(x=>x.slug===slug);
+      if (i<0) return {prev:'#',next:'#'};
+      return {
+        prev:`artwork.html?slug=${encodeURIComponent(list[(i-1+list.length)%list.length].slug)}`,
+        next:`artwork.html?slug=${encodeURIComponent(list[(i+1)%list.length].slug)}`
+      };
+    }
+    function setHead(title, meta){
+      document.getElementById('doc-title').textContent = `${title} — Trudi Connolly`;
+      document.getElementById('meta-desc').setAttribute('content', (meta?meta+' · ':'') + 'by Trudi Connolly.');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!window.ARTWORKS) {
+        document.body.insertAdjacentHTML('afterbegin',
+          '<div class="warn" style="margin:1rem auto;max-width:960px">artworks.js not found or did not define <code>ARTWORKS</code>.</div>');
+        return;
+      }
+      if (!slug) {
+        document.body.insertAdjacentHTML('afterbegin',
+          '<div class="warn" style="margin:1rem auto;max-width:960px">Missing <code>?slug=…</code>. Open from the <a href="index.html">gallery index</a>.</div>');
+        return;
+      }
+
+      const data = ARTWORKS[slug];
+      const list = byTitleAlpha(ARTWORKS);
+      const {prev, next} = prevNext(list, slug);
+      document.getElementById('prevLink').href = prev;
+      document.getElementById('nextLink').href = next;
+
+      if (!data) {
+        document.body.insertAdjacentHTML('afterbegin',
+          `<div class="warn" style="margin:1rem auto;max-width:960px">No entry for <b>${slug}</b> in artworks.js.</div>`);
+        return;
+      }
+
+      const title = data.title || slug.replaceAll('_',' ');
+      const metaLine = [data.medium, data.size, data.year].filter(Boolean).join(' · ');
+      setHead(title, metaLine);
+
+      // Fill fields (hide gracefully when empty)
+      document.getElementById('title').textContent = title;
+      const $meta = document.getElementById('meta');
+      if (metaLine) $meta.textContent = metaLine; else $meta.style.display='none';
+
+      const path = `images/${slug}.jpg`;       // postfix-less image
+      const hero = document.getElementById('hero');
+      hero.src = path; hero.alt = `${title} collage by Trudi Connolly`;
+
+      const $cap = document.getElementById('caption');
+      if (data.caption) $cap.textContent = data.caption; else $cap.style.display='none';
+
+      document.getElementById('download').href = path;
+      document.getElementById('viewFull').href =
+        `viewer.html?img=${encodeURIComponent(path)}&title=${encodeURIComponent(title)}`;
+
+      // Keyboard + swipe nav
+      window.addEventListener('keydown', (e)=>{
+        if (/INPUT|TEXTAREA|SELECT/.test((e.target||{}).tagName)) return;
+        if (e.key==='ArrowLeft') location.href = prev;
+        if (e.key==='ArrowRight') location.href = next;
+      });
+      let sx=0, sy=0, st=0;
+      const TH=50, REST=120, TIME=800;
+      const surface = document.getElementById('main');
+      surface.addEventListener('touchstart', e=>{const t=e.changedTouches[0]; sx=t.pageX; sy=t.pageY; st=Date.now();},{passive:true});
+      surface.addEventListener('touchend', e=>{
+        const t=e.changedTouches[0], dx=t.pageX-sx, dy=t.pageY-sy, dt=Date.now()-st;
+        if (Math.abs(dx)>=TH && Math.abs(dy)<=REST && dt<=TIME) location.href = dx<0?next:prev;
+      },{passive:true});
+    });
+  })();
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="series">Illuminations / Sacred Paper</div>
+    <h1 id="title">Artwork</h1>
+    <div id="meta" class="meta"></div>
+
+    <nav class="toolbar" aria-label="Artwork navigation">
+      <a id="prevLink" href="#">← Previous</a>
+      <a href="index.html">Gallery Index</a>
+      <a id="nextLink" href="#">Next →</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <figure>
+      <img id="hero" class="hero" src="" alt="">
+      <figcaption id="caption"></figcaption>
+    </figure>
+
+    <div class="toolbar">
+      <a id="viewFull" href="#" target="_blank" rel="noopener">View fullscreen</a>
+      <a id="download" href="#" download>Download image</a>
+    </div>
+  </main>
+
+  <footer>© 2025 Trudi Connolly</footer>
+</body>
+</html>

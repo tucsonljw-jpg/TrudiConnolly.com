@@ -1,0 +1,16 @@
+:root { --bg:#eee; --ink:#111; --accent:#d93a2f; --muted:#666; --link:#3e4a5e; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header,main,footer{max-width:960px;margin:0 auto;padding:1rem}
+header{padding-top:2rem}
+h1{font:700 2rem/1.2 Inter,sans-serif;margin:.25rem 0}
+.series{font:italic 1.1rem "Crimson Text",serif;color:var(--accent)}
+.meta{color:var(--muted);margin:.25rem 0 1rem}
+.toolbar{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0}
+.toolbar a{color:var(--link);text-decoration:none;border:1px solid #cfcfcf;border-radius:.5rem;padding:.4rem .7rem}
+.toolbar a:hover{color:var(--accent);border-color:var(--accent)}
+figure{margin:1rem 0}
+img.hero{display:block;max-width:100%;height:auto;border-radius:.5rem;background:#ddd}
+figcaption{font:italic 1.05rem "Crimson Text",serif;color:#333;margin:.75rem 0 0}
+footer{color:#9a9a9a;font-size:.85rem;text-align:center;padding:2rem 1rem 3rem}
+@media (prefers-reduced-motion: reduce){.toolbar a{transition:none}}

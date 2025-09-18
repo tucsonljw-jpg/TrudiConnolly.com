@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Image Viewer</title>
+<style>
+  :root{--bg:#111;--ui:#fff;--muted:#bbb;--accent:#d93a2f}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--ui);font:14px/1.4 system-ui,Segoe UI,Inter,Arial}
+  .toolbar{
+    position:fixed; left:50%; top:12px; transform:translateX(-50%);
+    display:flex; gap:.5rem; padding:.35rem; background:rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.15); border-radius:.6rem; backdrop-filter:blur(6px); z-index:3;
+  }
+  .btn{
+    appearance:none; border:1px solid rgba(255,255,255,.25); color:var(--ui); background:rgba(0,0,0,.25);
+    padding:.4rem .6rem; border-radius:.45rem; cursor:pointer; font-weight:600
+  }
+  .btn:hover{border-color:var(--accent); color:var(--accent)}
+  .title{position:fixed; left:12px; bottom:12px; color:var(--muted); z-index:3; max-width:65vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .wrap{position:fixed; inset:0; overflow:hidden; touch-action:none; /* we handle pinch/drag */ }
+  .stage{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+  img#pic{display:block; max-width:none; max-height:none; user-select:none; -webkit-user-drag:none;}
+  /* cursors */
+  .cursor-zoom { cursor: zoom-in; }
+  .cursor-grab { cursor: grab; }
+  .cursor-grabbing { cursor: grabbing; }
+  /* help overlay (toggle with ?) */
+  .help{
+    position:fixed; right:12px; bottom:12px; background:rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.15); padding:.5rem .75rem; border-radius:.6rem; color:#ddd; z-index:3;
+  }
+  .help b{color:#fff}
+</style>
+</head>
+<body>
+<div class="toolbar" aria-label="Viewer controls">
+  <button class="btn" id="fit" title="Fit to screen (0)">Fit</button>
+  <button class="btn" id="one" title="Actual size (1)">1:1</button>
+  <button class="btn" id="zin" title="Zoom in (+)">+</button>
+  <button class="btn" id="zout" title="Zoom out (–)">–</button>
+</div>
+<div class="title" id="title"></div>
+<div class="wrap" id="wrap" aria-live="polite">
+  <div class="stage" id="stage">
+    <img id="pic" alt="">
+  </div>
+</div>
+<div class="help">
+  <b>Zoom:</b> wheel / + / – / dbl-click • <b>Pan:</b> drag • <b>Fit:</b> 0 • <b>1:1:</b> 1 • <b>Arrows:</b> pan
+</div>
+
+<script>
+(function(){
+  // --- read query params ---
+  const params = new URLSearchParams(location.search);
+  const src = params.get('img') || '';
+  const title = params.get('title') || (src ? src.split('/').pop() : 'Image');
+
+  const img = document.getElementById('pic');
+  const stage = document.getElementById('stage');
+  const wrap = document.getElementById('wrap');
+  const $title = document.getElementById('title');
+
+  if(!src){ $title.textContent = 'Missing ?img=…'; return; }
+  img.src = src; img.alt = title; $title.textContent = title;
+
+  const state = {
+    imgW: 0, imgH: 0,
+    scale: 1, min: 1, max: 8,
+    x: 0, y: 0,
+    dragging: false, lastX:0, lastY:0
+  };
+
+  function sizeToFit(){
+    const vw = wrap.clientWidth, vh = wrap.clientHeight;
+    const fit = Math.min(vw/state.imgW, vh/state.imgH);
+    state.min = Math.min(1, fit) * (state.imgW>0?1:1);
+    // If img is larger than viewport, fit < 1; if smaller, min will upscale to fit viewport width/height.
+    state.scale = fit;
+    state.x = 0; state.y = 0;
+    apply();
+    updateCursor();
+  }
+
+  function apply(){
+    stage.style.transform = `translate(calc(50% + ${state.x}px), calc(50% + ${state.y}px))`;
+    img.style.transform = `translate(-50%,-50%) scale(${state.scale})`;
+    img.style.transformOrigin = `top left`;
+    img.style.position = 'absolute';
+    img.style.left = '0px'; img.style.top = '0px';
+  }
+
+  function zoomAt(cx, cy, factor){
+    // Zoom relative to pointer: adjust pan so the point under cursor stays put
+    const rect = wrap.getBoundingClientRect();
+    const vx = cx - rect.left - rect.width/2 - state.x;
+    const vy = cy - rect.top  - rect.height/2 - state.y;
+
+    const prev = state.scale;
+    const next = clamp(prev * factor, state.min*0.5, state.max);
+
+    if (Math.abs(next - prev) < 1e-6) return;
+    const k = next/prev - 1;
+    state.x -= vx * k;
+    state.y -= vy * k;
+    state.scale = next;
+    apply();
+    updateCursor();
+  }
+
+  function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+  function updateCursor(){
+    if (state.scale <= state.min + 1e-6) {
+      wrap.classList.add('cursor-zoom');
+      wrap.classList.remove('cursor-grab','cursor-grabbing');
+    } else {
+      wrap.classList.remove('cursor-zoom','cursor-grabbing');
+      wrap.classList.add('cursor-grab');
+    }
+  }
+
+  img.addEventListener('load', () => {
+    // natural size
+    // Use naturalWidth/Height; fallback if 0
+    state.imgW = img.naturalWidth || img.width;
+    state.imgH = img.naturalHeight || img.height;
+    // initialize transforms
+    img.style.left = '50%'; img.style.top='50%';
+    img.style.transform = 'translate(-50%,-50%) scale(1)';
+    sizeToFit();
+  });
+
+  // Wheel zoom
+  wrap.addEventListener('wheel', (e)=>{
+    e.preventDefault();
+    const factor = (e.deltaY < 0) ? 1.15 : 1/1.15;
+    zoomAt(e.clientX, e.clientY, factor);
+  }, {passive:false});
+
+  // Click/dblclick zoom
+  let lastClick = 0;
+  wrap.addEventListener('click', (e)=>{
+    const now = performance.now();
+    if (now - lastClick < 300) { // double-click
+      const targetScale = (state.scale <= state.min + 1e-6) ? Math.min(state.max, state.min*2.5) : state.min;
+      const factor = targetScale / state.scale;
+      zoomAt(e.clientX, e.clientY, factor);
+    }
+    lastClick = now;
+  });
+
+  // Drag to pan
+  wrap.addEventListener('pointerdown
