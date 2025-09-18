@@ -184,3 +184,4 @@ We who fixed the sky, who murdered children' s moons, ye, some martyred but more
     number: 18
   }
 };
+;window.ARTWORKS = window.ARTWORKS || ARTWORKS;
