@@ -1,565 +1,88 @@
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trudi Connolly — Illuminations / Sacred Paper</title>
+  <meta name="description" content="A selection of cut-paper collages by Trudi Connolly: Illuminations / Sacred Paper.">
+  <meta name="theme-color" content="#EEEEEE">
 
-<title>Trudi Connolly</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style>
+    :root { --bg:#eee; --ink:#111; --muted:#6c6c6c; --accent:#d93a2f; --link:#3e4a5e; --card:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif; }
+    a { color:var(--link); text-decoration:none; }
+    a:hover { color:var(--accent); }
 
-<style type="text/css">
-<!--
-a:link {
-	text-decoration: none;
-	color: #506A7A;
-}
+    header, main, footer { max-width:1200px; margin:0 auto; padding:1rem; }
+    header { padding-top:2rem; }
+    h1 { font:700 2.5rem/1.1 Inter,sans-serif; margin:.25rem 0; }
+    .series { font:italic 1.25rem "Crimson Text",serif; color:var(--accent); }
 
-a:visited {
-	text-decoration: none;
-	color: #506A7A;
-}
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.25rem; margin-top:1rem; }
 
-a:active {
-	text-decoration: none
-}
-
-a:hover {
-	text-decoration: none;
-	color: #ccccff;
-}
-
-.container {
-	position: relative;
-	width: 100%;
-}
-
-.image {
-	opacity: 1;
-	display: block;
-	width: "300";
-	height: auto;
-	transition: .5s ease;
-	backface-visibility: hidden;
-}
-
-.middle {
-	transition: .5s ease;
-	opacity: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	text-align: center;
-}
-
-.container:hover .image {
-	opacity: 0.3;
-}
-
-.container:hover .middle {
-	opacity: 1;
-}
-
-.text {
-	color: black;
-	font-size: 16px;
-	padding: 16px 16px;
-}
-
-.style1 {
-	color: #506A7A;
-}
-
-.style2 {
-	color: #666666
-}
-
-.style3 {
-      font-family: 'Crimson Text', serif;
-	        font-style: italic;
-      font-weight: 400;
-      font-size: 4.0rem;
-      color: #D93A2F;
-      letter-spacing: 0.4px;
-      margin-top: 0.5rem;
-      margin-bottom: 2.5rem;
-}
-
-.style4 {
-	color: #a04000;
-	font-weight: bold;
-}
-
-.style5 {
-	color: #0000000;
-	font-weight: bold;
-}
-.style6 {
-	color: #003333;
-	font-weight: bold;
-}
-    .series-title {
-      font-family: 'Crimson Text', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.5rem;
-      color: #D93A2F;
-      letter-spacing: 0.4px;
-      margin-top: 0.5rem;
-      margin-bottom: 2.5rem;
+    .card {
+      position:relative; width:100%; aspect-ratio:1/1;
+      overflow:hidden; border-radius:.75rem; background:var(--card);
+      box-shadow:0 1px 2px rgba(0,0,0,.06);
+      transition:transform .08s ease-in-out, box-shadow .12s ease-in-out;
     }
-	
-	    footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: #9A9A9A;
-      padding: 2rem 1rem;
-      font-family: 'Inter', sans-serif;
+    .card:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(0,0,0,.08); }
+    .card > a { position:absolute; inset:0; display:block; }
+
+    .thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+
+    .meta {
+      position:absolute; left:0; right:0; bottom:0;
+      background:rgba(255,255,255,.85); backdrop-filter:blur(2px);
+      padding:.5rem .75rem; font-size:.9rem;
     }
--->
-</style>
+    .title { font-weight:600; }
+    .no { color:var(--muted); margin-left:.35rem; }
 
-<meta name="keywords" content="Trudi, Connolly, Tucson, Arizona">
-<link rel="icon" type="image/png" href="/favicon16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicon32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon96x96.png" sizes="96x96">
-<link rel="apple-touch-icon" sizes="72x72" href="touch-ipad.png">
-<link rel="apple-touch-icon" sizes="114x114" href="touch-iphone.png">
-<link rel="apple-touch-icon" sizes="152x152" href="touch-ipad-ret.png">
+    footer { color:#9a9a9a; font-size:.85rem; text-align:center; padding:2rem 1rem 3rem; }
 
-<link rel="manifest" href="/site.webmanifest">
-
+    @media (max-width:420px) { h1 { font-size:2rem; } .series{font-size:1.1rem;} }
+  </style>
 </head>
+<body>
+  <header>
+    <h1>Trudi Connolly</h1>
+    <div class="series">Illuminations / Sacred Paper</div>
+  </header>
 
-<body bgcolor="#EEEEEE" alink="#003333">
+  <main>
+    <section class="grid" aria-label="Gallery">
 
-	<br>
-	<br>
-	<br>
+      <article class="card"><a href="Arachne.html"><img class="thumb" src="images/Arachne_300.jpg" alt="Arachne" loading="lazy"><div class="meta"><span class="title">Arachne</span><span class="no">No. 2</span></div></a></article>
+      <article class="card"><a href="Urns.html"><img class="thumb" src="images/Urns_300.jpg" alt="Funeral Urns" loading="lazy"><div class="meta"><span class="title">Funeral Urns</span><span class="no">No. 18</span></div></a></article>
+      <article class="card"><a href="Ariadne_auf_Naxos.html"><img class="thumb" src="images/Ariadne_auf_Naxos_300.jpg" alt="Ariadne auf Naxos" loading="lazy"><div class="meta"><span class="title">Ariadne auf Naxos</span><span class="no">No. 4</span></div></a></article>
+      <article class="card"><a href="Artist_at_Home.html"><img class="thumb" src="images/Artist_at_Home_300.jpg" alt="The Artist at Home" loading="lazy"><div class="meta"><span class="title">The Artist at Home</span><span class="no">No. 15</span></div></a></article>
+      <article class="card"><a href="Bayeuse_Tapestry.html"><img class="thumb" src="images/Bayeuse_Tapestry_300.jpg" alt="Bayeuse Tapestry" loading="lazy"><div class="meta"><span class="title">Bayeuse Tapestry</span><span class="no">No. 3</span></div></a></article>
+      <article class="card"><a href="The_Capital.html"><img class="thumb" src="images/The_Capital_300.jpg" alt="The Capital" loading="lazy"><div class="meta"><span class="title">The Capital</span><span class="no">No. 1</span></div></a></article>
+      <article class="card"><a href="Corps_Feminine.html"><img class="thumb" src="images/Corps_Feminine_300.jpg" alt="Corps Féminine" loading="lazy"><div class="meta"><span class="title">Corps Féminine</span><span class="no">No. 20</span></div></a></article>
+      <article class="card"><a href="Demon_of_History.html"><img class="thumb" src="images/Demon_of_History_300.jpg" alt="Demon of History" loading="lazy"><div class="meta"><span class="title">Demon of History</span><span class="no">No. 2</span></div></a></article>
+      <article class="card"><a href="Dream_1.html"><img class="thumb" src="images/Dream_1_300.jpg" alt="Dream 1" loading="lazy"><div class="meta"><span class="title">Dream 1</span><span class="no">No. 9</span></div></a></article>
+      <article class="card"><a href="Ethiopian_Gate.html"><img class="thumb" src="images/Ethiopian_Gate_300.jpg" alt="Ethiopian Gate" loading="lazy"><div class="meta"><span class="title">Ethiopian Gate</span></div></a></article>
+      <article class="card"><a href="Interior.html"><img class="thumb" src="images/Interior_300.jpg" alt="Interior" loading="lazy"><div class="meta"><span class="title">Interior</span><span class="no">No. 19</span></div></a></article>
+      <article class="card"><a href="Keres.html"><img class="thumb" src="images/Keres_300.jpg" alt="Keres" loading="lazy"><div class="meta"><span class="title">Keres</span><span class="no">No. 16</span></div></a></article>
+      <article class="card"><a href="Etruscan_Urn_for_My_Mothers_Ashes.html"><img class="thumb" src="images/Etruscan_Urn_for_My_Mothers_Ashes_300.jpg" alt="Etruscan Urn for My Mothers Ashes" loading="lazy"><div class="meta"><span class="title">Etruscan Urn for My Mothers Ashes</span><span class="no">No. 8</span></div></a></article>
+      <article class="card"><a href="Five_Modalities_of_Conjugal_Felicity.html"><img class="thumb" src="images/Five_Modalities_of_Conjugal_Felicity_300.jpg" alt="Five Modalities of Conjugal Felicity" loading="lazy"><div class="meta"><span class="title">Five Modalities of Conjugal Felicity</span><span class="no">No. 12</span></div></a></article>
+      <article class="card"><a href="Glass_Alchemy.html"><img class="thumb" src="images/Glass_Alchemy_300.jpg" alt="Glass Alchemy" loading="lazy"><div class="meta"><span class="title">Glass Alchemy</span><span class="no">No. 7</span></div></a></article>
+      <article class="card"><a href="Muses.html"><img class="thumb" src="images/Muses_300.jpg" alt="Muses (Wit, Faith, Compulsion)" loading="lazy"><div class="meta"><span class="title">Muses (Wit, Faith, Compulsion)</span><span class="no">No. 6</span></div></a></article>
+      <article class="card"><a href="Red_Sky.html"><img class="thumb" src="images/Red_Sky_300.jpg" alt="Red Sky" loading="lazy"><div class="meta"><span class="title">Red Sky</span><span class="no">No. 14</span></div></a></article>
+      <article class="card"><a href="Strategies.html"><img class="thumb" src="images/Strategies_300.jpg" alt="Strategies" loading="lazy"><div class="meta"><span class="title">Strategies</span><span class="no">No. 11</span></div></a></article>
+      <article class="card"><a href="A_Truthful_Decameron.html"><img class="thumb" src="images/A_Truthful_Decameron_300.jpg" alt="A Truthful Decameron" loading="lazy"><div class="meta"><span class="title">A Truthful Decameron</span><span class="no">No. 13</span></div></a></article>
 
-	<blockquote>
-		<p align="Left">
-			<span class="style1"><font face="Arial, Helvetica, sans-serif"><font
-					size="8">trudi</font></font></span><span class="style6"><font size="8"><font
-					face="Verdana, Arial, Helvetica, sans-serif">connolly</font></font></span>
-      <div class="series-title">Illuminations/Sacred Paper</div>
-		</p>
-	</blockquote>
+    </section>
+  </main>
 
-	<table>
-
-		<tr>
-			<td><p align="right">&nbsp;</p>
-				<p></p></td>
-		</tr>
-		<tr>
-			<td height="335px" width="100px" align="center"></td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Arachne.html"> <img
-						src="http://www.trudiconnolly.com/Arachne_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-																<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Arachne<br></font>
-						</div>
-					<div class="middle">
-												<div class="style3">
-<!-- 							<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2018<br>11 x 12
-								inches<br>Cut Paper<br><br> -->
-								<font>No.2</font>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Urns.html"> <img
-						src="http://www.trudiconnolly.com/Urns_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Funeral Urns<br></font>
-						</div>
-					<div class="middle">
-																		<div class="style3">
-<!-- 							<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2022<br>12 x 12
-								inches<br>Cut Paper<br><br> -->
-								<font>No.18</font>
-					</div> 
-				</div>
-			</td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Ariadne_auf_Naxos.html">
-						<img src="http://www.trudiconnolly.com/Ariadne_auf_Naxos_300.jpg"
-						alt="SCENE MISSING" class="image">
-					</a>
-																					<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Ariadne
-								auf Naxos</font>
-						</div>
-					<div class="middle">
-												<div class="style3">
-<!-- 							<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2018<br>22 x 22
-								inches<br>Cut Paper<br><br> -->
-								<font>No.4</font>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Artist_at_Home.html"> <img
-						src="http://www.trudiconnolly.com/Artist_at_Home_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">The
-								Artist at Home</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 							<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2022-2023<br>12x15
-								inches<br>Cut Paper<br><br> -->
-								<font>No.15</font>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td height="335px" width="100px" align="center"></td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Bayeuse_Tapestry.html"> <img
-						src="http://www.trudiconnolly.com/Bayeuse_Tapestry_300.jpg"
-						alt="SCENE MISSING" class="image">
-					</a>
-											<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Bayeuse
-								Tapestry</font>
-						</div>
- 					<div class="middle">
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">[UNDATED]<br>26x22
-								inches<br>Cut Paper<br><br> -->
-								<font>No.3</font>
-						</div>
-					</div> 
-				</div>
-			</td>
-
-
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/The_Capital.html"> <img
-						src="http://www.trudiconnolly.com/The_Capital_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">The
-								Capital</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">[UNDATED]<br>55x78
-								inches<br>Cut Paper<br><br> -->
-								<font>No.1</font>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Corps_Feminine.html"> <img
-						src="http://www.trudiconnolly.com/Corps_Feminine_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Corps
-								Feminine</font>
-						</div>
-					 <div class="middle">
-
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2022-2024<br>8x16
-								inches<br>Cut Paper<br><br> -->
-								<font>No.20</font>
-						</div>
-					</div> 
-				</div>
-			</td>
-						<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Demon_of_History.html"> <img
-						src="http://www.trudiconnolly.com/Demon_of_History_300.jpg"
-						alt="SCENE MISSING" class="image">
-					</a>
-											<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Demon
-								of History</font>
-						</div>
-					 <div class="middle">
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2018<br>14x16
-								inches<br>Cut Paper<br><br> -->
-								<font>No.2</font>
-						</div>
-					</div> 
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td height="335px" width="100px" align="center"></td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Dream_1.html"> <img
-						src="http://www.trudiconnolly.com/Dream_1_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Dream
-								1</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2019<br>11x19
-								inches<br>Cut Paper<br><br> -->
-								<font>No.9</font>
-						</div>
-					</div> 
-					<a></a>
-				</div>
-			</td>
-
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Ethiopian_Gate.html"> <img
-						src="http://www.trudiconnolly.com/Ethiopian_Gate_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Ethiopian
-								Gate</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 														<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2019<br>31x25
-								inches<br>Cut Paper<br><br>
-								<font>No.[COUNT]</font> -->
-						</div>
-					</div> 
-				</div>
-	
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Interior.html"> <img
-						src="http://www.trudiconnolly.com/Interior_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Interior</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2021<br>30x15
-								inches<br>Cut Paper<br><br> -->
-								<font>No.19</font>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Keres.html"> <img
-						src="http://www.trudiconnolly.com/Keres_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Keres</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">[UNDATED]<br>17x14
-								inches<br>Cut Paper<br><br> -->
-								<font>No.16</font>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td height="335px" width="100px" align="center"></td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a
-						href="http://www.trudiconnolly.com/Etruscan_Urn_for_My_Mothers_Ashes.html">
-						<img
-						src="http://www.trudiconnolly.com/Etruscan_Urn_for_My_Mothers_Ashes_300.jpg"
-						alt="SCENE MISSING" class="image">
-					</a>
-											<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Etruscan
-								Urn for My Mothers Ashes</font>
-						</div>
-					<div class="middle">
-						<div class="style3">
-<!-- 														<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2018-2019<br>11x9
-								inches<br>Cut Paper<br><br> -->
-								<font>No.8</font>
-						</div>
-					</div> 
-				</div>
-			</td>
-
-
-			<td width="325px" align="center">
-				<div class="container">
-					<a
-						href="http://www.trudiconnolly.com/Five_Modalities_of_Conjugal_Felicity.html">
-						<img
-						src="http://www.trudiconnolly.com/Five_Modalities_of_Conjugal_Felicity_300.jpg"
-						alt="SCENE MISSING" class="image">
-					</a>
-											<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Five
-								Modalities of Conjugal Felicity</font>
-						</div>
-					<div class="middle">
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2020<br>18x27
-								inches<br>Cut Paper<br><br> -->
-								<font>No.12</font>
-						</div>
-					</div> 
-				</div>
-			</td>
-
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Glass_Alchemy.html"> <img
-						src="http://www.trudiconnolly.com/Glass_Alchemy_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Glass
-								Alchemy</font>
-						</div>
-				 	<div class="middle">
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">[UNDATED]<br>3x5
-								inches<br>Cut Paper<br><br> -->
-								<font>No.7</font>
-						</div>
-					</div> 
-				</div>
-			</td>
-						<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Muses.html"> <img
-						src="http://www.trudiconnolly.com/Muses_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Muses
-								(Wit, Faith, Compulsion)</font>
-						</div>
-					<div class="middle">
-						<div class="style3">
-<!-- 														<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2019<br>10x9
-								inches<br>Cut Paper<br><br> -->
-								<font>No.6</font>
-						</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td height="335px" width="100px" align="center"></td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Red_Sky.html"> <img
-						src="http://www.trudiconnolly.com/Red_Sky_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Red
-								Sky</font>
-						</div>
-					<div class="middle">
-
-						<div class="style3">
-<!-- 																				<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2021<br>10x14
-								inches<br>Cut Paper<br><br> -->
-								<font>No.14</font>
-						</div>
-					</div>
-				</div>
-			</td>
-
-
-
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/Strategies.html"> <img
-						src="http://www.trudiconnolly.com/Strategies_300.jpg"
-						alt="SCENE MISSING" class="image"></a>
-												<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">Strategies</font>
-						</div>
-					 <div class="middle">
-						<div class="style3">
-<!-- 								<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2019<br>[SIZE]
-								inches<br>Cut Paper<br><br> -->
-								<font>No.11</font>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td width="325px" align="center">
-				<div class="container">
-					<a href="http://www.trudiconnolly.com/A_Truthful_Decameron.html">
-						<img
-						src="http://www.trudiconnolly.com/A_Truthful_Decameron_300.jpg"
-						alt="SCENE MISSING" class="image">
-					</a>
-							<div class="style5">
-							<font size="4" face="Verdana, Arial, Helvetica, sans-serif">A
-								Truthful Decameron </font>
-						</div>
-					 <div class="middle">
-						<div class="style3">
-<!-- 														<font size="3" face="Verdana, Arial, Helvetica, sans-serif">2020<br>23x18
-								inches<br>Cut Paper<br><br> -->
-								<font>No.13</font>
-						</div>
-					</div>
-				</div>
-			</td>
-						<td width="325px" align="center">
-				
-					</div>
-				</div>
-			</td>
-		</tr>
-	</table>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<blockquote>
-		<span class="style2"><strong><a
-				href="mailto:Trudi@TrudiConnolly.com"><font size="6"
-					face="Verdana, Arial, Helvetica, sans-serif">contact</font></a></strong></span>
-	</blockquote>
-	
   <footer>
-    � 2025 Trudi Connolly. All rights reserved. | Image scan available on request.
+    © 2025 Trudi Connolly. All rights reserved. · <a href="mailto:Trudi@TrudiConnolly.com">contact</a>
   </footer>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 </body>
-
 </html>
