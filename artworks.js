@@ -1,7 +1,4 @@
-/* Centralized data for all works.
- * Keys are slugs (match HTML query param & image filenames).
- */
-
+/* artworks.js — plain JS, no modules, defines a global ARTWORKS */
 const ARTWORKS = {
   A_Truthful_Decameron: {
     title: "A Truthful Decameron",
@@ -15,27 +12,27 @@ const ARTWORKS = {
   Arachne: {
     title: "Arachne",
     medium: "Cut Paper",
-    size: "??×?? inches",   // fill in
-    year: "????",
-    caption: "Arachne's suicide is less about having been dishonored than about her horror at the gods' disregard for the truth.",
+    size: "",
+    year: "",
+    caption: "",
     number: 2
   },
 
   Ariadne_auf_Naxos: {
     title: "Ariadne auf Naxos",
     medium: "Cut Paper",
-    size: "??×?? inches",
-    year: "????",
-    caption: "Theseus fears her after the orgy.",
+    size: "",
+    year: "",
+    caption: "",
     number: 4
   },
 
   Artist_at_Home: {
     title: "The Artist at Home",
     medium: "Cut Paper",
-    size: "??×?? inches",
-    year: "????",
-    caption: "A wise damsel need not be a martyr to be a painter.",
+    size: "",
+    year: "",
+    caption: "",
     number: 15
   },
 
@@ -44,7 +41,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "26×22 inches",
     year: "[UNDATED]",
-    caption: "Victory",
+    caption: "Rebellion (antique source of inspiration to the Wise Damsel.)",
     number: 3
   },
 
@@ -53,7 +50,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "8×16 inches",
     year: "2022–2024",
-    caption: "Early experiences of body shaming diminish access to nerves later in life.",
+    caption: "Early body shaming diminishes access to nerves later in life.",
     number: 20
   },
 
@@ -62,7 +59,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "14×16 inches",
     year: "2018",
-    caption: "One single ancient evil is naive; time is nothing but the grinding down of our bones.",
+    caption: "A single, ancient source of evil is naive a myth; rather, time is nothing but the grinding down of our bones.",
     number: 2
   },
 
@@ -80,31 +77,31 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "31×25 inches",
     year: "2019",
-    caption: `Ethiopia was blessed as the first place the gods arrived daily, but their calcification begins when they find the gates to our realm shut.
-The poem reads:
-I. At lapidation's over-flow of few and final gods, Door Lord last.
-II. Things are things, hedgerowed all, with lazum winds and gyre long hence cast.
-III. Mapped rivers, sand's supplicants be, for if bank, deluge at any dyke-key.
-IV. Mute signs, praised be thou as self-augury in facet topaz.`,
+    caption:
+      "Ethiopia was blessed as the first place the gods arrived daily, but their calcification begins when they find the gates to our realm shut.\n" +
+      "The poem reads:\n" +
+      "I. At lapidation's over-flow of few and final gods, Door Lord last.\n" +
+      "II. Things are things, hedgerowed all, with lazum winds and gyre long hence cast.\n" +
+      "III. Mapped rivers, sand's supplicants be, for if bank, deluge at any dyke-key.\n" +
+      "IV. Mute signs, praised be thou as self-augury in facet topaz.",
     number: null
   },
 
-  Urn_2: {
-    title: "Urn 2",
+  Etruscan_Urn_for_My_Mothers_Ashes: {
+    title: "Etruscan Urn for My Mothers Ashes",
     medium: "Cut Paper",
     size: "11×9 inches",
     year: "2018–2019",
-    caption: "My mother's peace with mortality was to be an Etruscan funeral urn.",
+    caption: "Her manner of peace-making with morality.",
     number: 8
   },
 
-  
- Five_maps_for_happy_marriages : {
-    title: "Five maps for happy marriages",
+  Five_Modalities_of_Conjugal_Felicity: {
+    title: "Five Modalities of Conjugal Felicity",
     medium: "Cut Paper",
     size: "18×27 inches",
     year: "2020",
-    caption: "From upper left: All lovers into one; parallel masturbation; integration; embrace; circulation and gravity.",
+    caption: "Distillation of all lovers; Circulation and gravity, Parallel masturbation; One surrounds the other; Integration.",
     number: 12
   },
 
@@ -117,8 +114,8 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     number: 7
   },
 
-  Dream_2_Interior: {
-    title: "Dream 2: Interior",
+  Interior: {
+    title: "Interior",
     medium: "Cut Paper",
     size: "30×15 inches",
     year: "2021",
@@ -126,12 +123,12 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     number: 19
   },
 
-  Trouble/Toil: {
-    title: "Trouble/Toil",
+  Keres: {
+    title: "Keres",
     medium: "Cut Paper",
     size: "17×14 inches",
     year: "[UNDATED]",
-    caption: "Assembling the ingredients to raise the devil is a long walk of faith.",
+    caption: "Assembling the parts to raise the devil is a long walk of faith.",
     number: 16
   },
 
@@ -149,19 +146,20 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     medium: "Cut Paper",
     size: "10×14 inches",
     year: "2021",
-    caption: `The poem reads:
-Perpetual black red sky, vary' d only by degree, fixeth our wan eyelids against thou stay⟭ sun.
-Here abide 900 million, the most of those remaining.
-Flanking thou, ring of mapped embers, first, somnambulist cities, magnetic, atomic.
-And to the left, degrees of ever-light, where first the corn is sweet, then crumbles unfathomable.
-We who fixed the sky, who murdered children' s moons, ye, some martyred but more fed, willing bridegrooms to fire and to doom.`,
+    caption:
+      "The poem reads:\n" +
+      "Perpetual black red sky, vary'd only by degree, fixeth our wan eyelids against thou stay sun.\n" +
+      "Here abide 900 million, the most of those remaining.\n" +
+      "Flanking thou, ring of mapped embers, first, somnambulist cities, magnetic, atomic.\n" +
+      "And to the left, degrees of ever-light, where first the corn is sweet, then crumbles unfathomable.\n" +
+      "We who fixed the sky, who murdered children's moons, ye, some martyred but more fed, willing bridegrooms to fire and to doom.",
     number: 14
   },
 
   Strategies: {
     title: "Strategies",
     medium: "Cut Paper",
-    size: "??×?? inches",  // to fill in
+    size: "",
     year: "2019",
     caption: "This book elaborates 17 master strategies for tarot (originally a competitive game), beginning with the Yeats series (Geist, Craiglaith, Faust, Enunciation.)",
     number: 11
@@ -172,53 +170,19 @@ We who fixed the sky, who murdered children' s moons, ye, some martyred but more
     medium: "Cut Paper",
     size: "55×78 inches",
     year: "[UNDATED]",
-    caption: "The towering city.",
+    caption: "",
     number: 1
   },
 
   Urns: {
-    title: "Urns",
+    title: "Funeral Urns",
     medium: "Cut Paper",
     size: "12×12 inches",
     year: "2022",
-    caption: "The work of mourning my parents: compartmentalization; my husband; speech",
-    number: 18
-  }
-
-    William_Morris: {
-    title: "William Morris",
-    medium: "Cut Paper",
-    size: "12×12 inches",
-    year: "2025",
-    caption: "",
-    number: 18
-  }
-
-    Chairi_Decompression: {
-    title: "Chairi Decompression",
-    medium: "Cut Paper",
-    size: "12×12 inches",
-    year: "202x",
-    caption: "",
-    number: 18
-  }
-
-    Beloved: {
-    title: "Beloved",
-    medium: "Cut Paper",
-    size: "12×12 inches",
-    year: "202x",
-    caption: "",
-    number: 18
-  }
-
-    The_Noonday_Demon: {
-    title: "The Noonday Demon",
-    medium: "Cut Paper",
-    size: "12×12 inches",
-    year: "202x",
-    caption: "",
+    caption: "The work of mourning my parents: 1. Compartmentalization; 2. My husband; 3. Independent speech",
     number: 18
   }
 };
-;window.ARTWORKS = window.ARTWORKS || ARTWORKS;
+
+/* ensure it’s global */
+window.ARTWORKS = window.ARTWORKS || ARTWORKS;
