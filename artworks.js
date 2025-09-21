@@ -102,7 +102,16 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
   },
 
   /* Leading space removed; keep slug filename-safe */
-  Five_Maps_for_Happy_Marriages: {
+  Five_Modalities_of_Conjugal_Felicity: {
+    title: "OLD",
+    medium: "Cut Paper",
+    size: "18×27 inches",
+    year: "2020",
+    caption: "From upper left: All lovers into one; parallel masturbation; integration; embrace; circulation and gravity.",
+    number: 12
+  },
+
+    Five_Maps_for_Happy_Marriages: {
     title: "Five maps for happy marriages",
     medium: "Cut Paper",
     size: "18×27 inches",
