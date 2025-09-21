@@ -26,9 +26,7 @@
     .warn{background:#fff3cd;border:1px solid #ffe08a;color:#6b5600;padding:.75rem;border-radius:.5rem}
   </style>
 
-  <!-- Load data BEFORE script uses it -->
   <script src="artworks.js"></script>
-
   <script>
   (function(){
     const qs   = new URLSearchParams(location.search);
@@ -54,41 +52,30 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      if (!window.ARTWORKS) {
-        document.body.insertAdjacentHTML('afterbegin','<div class="warn" style="max-width:960px;margin:1rem auto">Error: artworks.js not found or ARTWORKS undefined.</div>');
-        return;
-      }
-      if (!slug) {
-        document.body.insertAdjacentHTML('afterbegin','<div class="warn" style="max-width:960px;margin:1rem auto">Missing <code>?slug=…</code>. Go back to <a href="index.html">index</a>.</div>');
-        return;
-      }
+      if (!window.ARTWORKS) return;
+      if (!slug) return;
+
       const data = ARTWORKS[slug];
+      if (!data) return;
+
       const list = alpha(ARTWORKS);
       const {prev, next} = neighbors(list, slug);
       document.getElementById('prevLink').href = prev;
       document.getElementById('nextLink').href = next;
-
-      if (!data) {
-        document.body.insertAdjacentHTML('afterbegin', `<div class="warn" style="max-width:960px;margin:1rem auto">No entry for <b>${slug}</b> in artworks.js.</div>`);
-        return;
-      }
 
       const title = data.title || slug.replaceAll('_',' ');
       const meta  = [data.medium, data.size, data.year].filter(Boolean).join(' · ');
       setHead(title, meta);
 
       document.getElementById('title').textContent = title;
-      const $meta = document.getElementById('meta');
-      if (meta) $meta.textContent = meta; else $meta.style.display = 'none';
+      if (meta) document.getElementById('meta').textContent = meta;
 
-      const imgPath = `images/${slug}.jpg`;   // postfix-less image
+      const imgPath = `images/${slug}.jpg`;
       const hero    = document.getElementById('hero');
       hero.src = imgPath; hero.alt = `${title} collage by Trudi Connolly`;
 
-      const $cap = document.getElementById('caption');
-      if (data.caption) $cap.textContent = data.caption; else $cap.style.display = 'none';
+      if (data.caption) document.getElementById('caption').textContent = data.caption;
 
-      document.getElementById('viewFull').href = `viewer.html?img=${encodeURIComponent(imgPath)}&title=${encodeURIComponent(title)}`;
       document.getElementById('download').href = imgPath;
 
       // keyboard + swipe
@@ -120,11 +107,14 @@
       <figcaption id="caption"></figcaption>
     </figure>
     <div class="toolbar">
-      <a id="viewFull" href="#" target="_blank" rel="noopener">View fullscreen</a>
       <a id="download" href="#" download>Download image</a>
     </div>
   </main>
 
-  <footer>© 2025 Trudi Connolly</footer>
+  <footer>
+    © 2025 Trudi Connolly. All rights reserved. · 
+    <a href="mailto:Trudi@TrudiConnolly.com">contact</a> · 
+    <a href="about.html">artist’s statement</a>
+  </footer>
 </body>
 </html>
