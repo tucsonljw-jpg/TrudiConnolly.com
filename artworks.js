@@ -101,17 +101,7 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     number: 8
   },
 
-  /* Leading space removed; keep slug filename-safe */
-  Five_Modalities_of_Conjugal_Felicity: {
-    title: "OLD",
-    medium: "Cut Paper",
-    size: "18×27 inches",
-    year: "2020",
-    caption: "From upper left: All lovers into one; parallel masturbation; integration; embrace; circulation and gravity.",
-    number: 12
-  },
-
-    Five_Maps_for_Happy_Marriages: {
+  Five_Maps_for_Happy_Marriages: {
     title: "Five maps for happy marriages",
     medium: "Cut Paper",
     size: "18×27 inches",
@@ -203,17 +193,16 @@ We who fixed the sky, who murdered children' s moons, ye, some martyred but more
   William_Morris: {
     title: "William Morris",
     medium: "Cut Paper",
-    size: "12×12 inches",
+    size: "17×23 inches",
     year: "2025",
     caption: "",
     number: 21
   },
 
-  /* Likely 'Chiari Decompression'—kept your spelling but fix the slug. */
-  Chairi_Decompression: {
-    title: "Chairi Decompression",
+  Chiari_Decompression: {
+    title: "Chiari Decompression",
     medium: "Cut Paper",
-    size: "12×12 inches",
+    size: "13×17 inches",
     year: "202x",
     caption: "",
     number: 22
