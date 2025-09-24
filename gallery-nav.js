@@ -12,10 +12,10 @@ const WORKS = [
   "Demon_of_History",
   "Dream_1",
   "Ethiopian_Gate",
-  "Interior",
-  "Keres",
+  "Dream_2_Interior",
+  "Trouble_Toil",
   "Etruscan_Urn_for_My_Mothers_Ashes",
-  "Five_Modalities_of_Conjugal_Felicity",
+  "Five_Maps_for_Happy_Marriages",
   "Glass_Alchemy",
   "Muses",
   "Red_Sky",
@@ -59,18 +59,6 @@ const WORKS = [
     if (e.key === "ArrowRight") location.href = nextHref;
   });
 
-  // Touch swipe (horizontal)
-  let startX = 0, startY = 0, startTime = 0;
-  const SWIPE_THRESHOLD = 50;     // px required horizontally
-  const RESTRAINT = 120;          // max vertical deviation
-  const ALLOWED_TIME = 800;       // ms
-
-  const surface = document.querySelector("main") || document.body;
-
-  surface.addEventListener("touchstart", (e) => {
-    const t = e.changedTouches[0];
-    startX = t.pageX; startY = t.pageY; startTime = Date.now();
-  }, {passive:true});
 
   surface.addEventListener("touchend", (e) => {
     const t = e.changedTouches[0];
