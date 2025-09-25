@@ -10,7 +10,7 @@
   <style>
     :root { --bg:#eee; --ink:#111; --accent:#d93a2f; --muted:#666; --link:#3e4a5e; }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,Segoe UI,Arial,sans-serif}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
     header,main,footer{max-width:960px;margin:0 auto;padding:1rem}
     header{padding-top:2rem}
     h1{font:700 2rem/1.2 Inter,sans-serif;margin:.25rem 0}
@@ -78,13 +78,11 @@
 
       document.getElementById('download').href = imgPath;
 
-      // keyboard + swipe
-      window.addEventListener('keydown', (e)=>{ if(e.key==='ArrowLeft') location.href=prev; if(e.key==='ArrowRight') location.href=next; });
-      let sx=0, sy=0, st=0; const TH=50, REST=120, TIME=800;
-      const surf=document.getElementById('main');
-      surf.addEventListener('touchstart',e=>{const t=e.changedTouches[0]; sx=t.pageX; sy=t.pageY; st=Date.now();},{passive:true});
-      surf.addEventListener('touchend',e=>{const t=e.changedTouches[0],dx=t.pageX-sx,dy=t.pageY-sy,dt=Date.now()-st;
-        if(Math.abs(dx)>=TH&&Math.abs(dy)<=REST&&dt<=TIME) location.href = dx<0?next:prev;},{passive:true});
+      // keyboard navigation
+      window.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowLeft') location.href = prev;
+        if(e.key === 'ArrowRight') location.href = next;
+      });
     });
   })();
   </script>
