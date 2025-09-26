@@ -9,7 +9,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "23×18 inches",
     year: "2020",
-    caption: "Actual quarantine was longer, more solipsistic, hedonistic and grotesquely conspiratorial.",
+    caption: "The pandemic was longer and more paranoid.",
     number: 13
   },
 
@@ -27,7 +27,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "??×?? inches",
     year: "????",
-    caption: "Theseus fears her after the orgy.",
+    caption: "Theseus fears her now, because of what she learned from Dionysus’s women.",
     number: 4
   },
 
@@ -63,7 +63,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "14×16 inches",
     year: "2018",
-    caption: "One single ancient evil is naive; time is nothing but the grinding down of our bones.",
+    caption: "One ancient evil is naive; time is nothing but the grinding down of our bones.",
     number: 2
   },
 
@@ -72,7 +72,7 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "11×19 inches",
     year: "2019",
-    caption: "A repeating agony and ecstasy since my childhood: a thousand tiny jewel dogs attempt to roll out the door.",
+    caption: "I have dreamed of a thousand jewel-sized dogs trying to run out of the door since I was a small child.",
     number: 9
   },
 
@@ -81,13 +81,8 @@ const ARTWORKS = {
     medium: "Cut Paper",
     size: "31×25 inches",
     year: "2019",
-    caption: `Ethiopia was blessed as the first place the gods arrived daily, but their calcification begins when they find the gates to our realm shut.
-The poem reads:
-I. At lapidation's over-flow of few and final gods, Door Lord last.
-II. Things are things, hedgerowed all, with lazum winds and gyre long hence cast.
-III. Mapped rivers, sand's supplicants be, for if bank, deluge at any dyke-key.
-IV. Mute signs, praised be thou as self-augury in facet topaz.`,
-    number: null
+    caption: "The gods first arrived daily in Ethiopia, but the doors to the world are shut. \n Chorus: \n I. At lapidation's over-flow of few and final gods, the Door Lord is last. \n II. Things are things, hedgerowed all, with lazum winds and gyre long hence cast. \n III. Mapped rivers, sand's supplicants be, for if bank, deluge at any dyke-key. \n IV. Mute signs, praised be thou as self-augury in facet topaz.",
+    number: 1
   },
 
   /* NOTE: You renamed this from 'Etruscan_Urn_for_My_Mothers_Ashes' to Urn_2.
@@ -111,7 +106,7 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
   },
 
   Glass_Alchemy: {
-    title: "Glass Alchemy",
+    title: "Winemark",
     medium: "Cut Paper",
     size: "3×5 inches",
     year: "[UNDATED]",
@@ -125,7 +120,7 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     medium: "Cut Paper",
     size: "30×15 inches",
     year: "2021",
-    caption: "The house has no windows but four lightwells with four citrus trees.",
+    caption: "Nothing but the four lightwells with four citrus trees.",
     number: 19
   },
 
@@ -144,7 +139,7 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     medium: "Cut Paper",
     size: "10×9 inches",
     year: "2019",
-    caption: "Wit, Faith and Compulsion, their horses and their good and bad dreams.",
+    caption: "Their horses, their objects, and their nightmares.",
     number: 6
   },
 
@@ -153,17 +148,12 @@ IV. Mute signs, praised be thou as self-augury in facet topaz.`,
     medium: "Cut Paper",
     size: "10×14 inches",
     year: "2021",
-    caption: `The poem reads:
-Perpetual black red sky, vary' d only by degree, fixeth our wan eyelids against thou stay⟭ sun.
-Here abide 900 million, the most of those remaining.
-Flanking thou, ring of mapped embers, first, somnambulist cities, magnetic, atomic.
-And to the left, degrees of ever-light, where first the corn is sweet, then crumbles unfathomable.
-We who fixed the sky, who murdered children' s moons, ye, some martyred but more fed, willing bridegrooms to fire and to doom.`,
+    caption: "Chorus:\n Oh, perpetual black red sky, vary' d only by degree, fixeth our wan eyelids against thou stayed sun.\n Here abide 900 million, the most of those remaining.\n Flanking thou, ring of mapped embers, first, somnambulist cities, magnetic, atomic.\n And to the left, degrees of ever-light, where first the corn is sweet, then crumbles unfathomable.\n We who fixed the sky, who murdered children' s moons,\n ye, some martyred but more fed, willing bridegrooms to fire and to doom.",
     number: 14
   },
 
-  Strategies: {
-    title: "Strategies",
+  The_Book_of_Sacred_Games: {
+    title: "The Book of Sacred Games",
     medium: "Cut Paper",
     size: "??×?? inches",
     year: "2019",
@@ -180,7 +170,6 @@ We who fixed the sky, who murdered children' s moons, ye, some martyred but more
     number: 1
   },
 
-  /* You renamed 'Funeral Urns' to 'Urns'; ensure images/Urns.jpg exists */
   Urns: {
     title: "Urns",
     medium: "Cut Paper",
