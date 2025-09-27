@@ -57,6 +57,18 @@
     .title { font-weight:600; }
     .no { color:var(--muted); margin-left:.35rem; }
 
+    /* --- Custom styles for the statement card --- */
+    #statement-card { aspect-ratio: auto; }
+    #statement-card > a {
+      position: relative; display: flex; flex-direction: column;
+      justify-content: space-between; height: 100%; padding: 1.25rem;
+    }
+    .statement-title { font: italic 1.2rem "Crimson Text", serif; color: var(--accent); margin-bottom: 0.5rem; }
+    .statement-body { font-size: 0.95rem; line-height: 1.6; margin: 0; }
+    .statement-cta { font-weight: 600; color: var(--link); margin-top: 1rem; align-self: start; }
+    #statement-card:hover .statement-cta { color: var(--accent); }
+    /* --- End custom styles --- */
+
     footer { color:#9a9a9a; font-size:.85rem; text-align:center; padding:2rem 1rem 3rem; }
     footer a { color: inherit; } /* Makes footer links match footer text color */
     footer a:hover { color: var(--accent); } /* Highlights on hover */
@@ -91,6 +103,24 @@
 
     const grid = document.querySelector('.grid');
     grid.innerHTML = ''; // Clear any fallback content
+
+    // --- NEW: Create and add the Artist's Statement card first ---
+    const statementCardHTML = `
+      <article class="card" id="statement-card">
+        <a href="about.html">
+          <div>
+            <h3 class="statement-title">Artist’s Statement</h3>
+            <p class="statement-body">
+              I make minutely hand-cut paper collages that read as illuminated pages from books that do not exist—part sacred text, part guide for living...
+            </p>
+          </div>
+          <div class="statement-cta">Read More →</div>
+        </a>
+      </article>
+    `;
+    grid.insertAdjacentHTML('beforeend', statementCardHTML);
+    // --- End new section ---
+
 
     // Sort artworks alphabetically by title for a consistent order
     const sortedWorks = Object.entries(ARTWORKS).map(([slug, data]) => {
