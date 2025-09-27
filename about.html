@@ -5,19 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Artist’s Statement — Trudi Connolly</title>
   <meta name="description" content="Artist’s statement and bio for Trudi Connolly, Tucson-based visual artist working in hand-cut paper collage." />
+  <meta name="theme-color" content="#282420">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <!-- Reuse your site styles -->
-  <link rel="stylesheet" href="artwork.css" />
   <style>
-    /* page-specific tweaks */
+    :root {
+      /* --- Warm "Sepia" Dark Theme --- */
+      --bg:#282420;
+      --ink:#dcd8d1;
+      --muted:#948f88;
+      --accent:#d15a45;
+      --link:#c58a47;
+      --card:#3a3530;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+    header,main,footer{max-width:960px;margin:0 auto;padding:1rem}
+    header{padding-top:2rem}
+    h1{font:700 2rem/1.2 Inter,sans-serif;margin:.25rem 0}
+    .series{font:italic 1.1rem "Crimson Text",serif;color:var(--accent)}
+    .meta{color:var(--muted);margin:.25rem 0 1rem}
+    .toolbar{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0}
+    .toolbar a{color:var(--link);text-decoration:none;border:1px solid var(--card);border-radius:.5rem;padding:.4rem .7rem}
+    .toolbar a:hover{color:var(--accent);border-color:var(--accent)}
+    footer{color:#9a9a9a;font-size:.85rem;text-align:center;padding:2rem 1rem 3rem}
+    footer a { color: inherit; }
+    footer a:hover { color: var(--accent); }
+
+    /* --- Page-specific tweaks --- */
     main { max-width: 820px; }
     h1 { margin-top: .25rem; }
-    h2 { font: italic 1.25rem "Crimson Text", serif; color: #d93a2f; margin: 2rem 0 .5rem; }
-    .lede { font: 400 1.05rem/1.75 "Crimson Text", serif; color:#2f2f2f; }
-    .body { margin-top: .5rem; font: 400 1.05rem/1.75 "Crimson Text", serif; color:#2f2f2f; }
-    .toolbar { margin-top: 1rem; }
-    .meta small { color:#6c6c6c }
+    h2 { font: italic 1.25rem "Crimson Text", serif; color: var(--accent); margin: 2rem 0 .5rem; }
+    .body { margin-top: .5rem; font: 400 1.05rem/1.75 "Crimson Text", serif; color: var(--ink); }
+    .meta small { color: var(--muted); }
     .spacer { height: .5rem }
   </style>
 </head>
@@ -31,20 +51,20 @@
   </header>
 
   <main>
-<section aria-labelledby="statement">
-  <p id="statement" class="body">
-    I make minutely hand-cut paper collages that read as illuminated pages from books that do not exist—part sacred text, part guide for living. Working from diverse printed materials, I cut and place thousands of tiny paper pieces to illuminate grief, desire, literature, and history as objects of ceremony and study. 
-  </p>
-  <p class="body">
-    Over six years I have composed 23 works—each complete in itself, yet together reading as an unbound manuscript for the education of “enlightened womanhood”, my revision of classical education. For instance, The Demon of History elaborates history as the doomed search for an origin rather than as a series of events. Since enlightened womanhood requires engagement with the real world, other works such as The Artist at Home and Conjugal Felicity contain accounts of and advice for daily life. Each work layers codes, allusions and patterns to show its subject as a system of full but elliptical discourses.
-  </p>
-  <p class="body">
-    With rich borders, marginalia, and textual annotations, my collages clearly reference illuminated Medieval manuscripts. These lavish books were not personal documents, but sought to stabilize wisdom. My works also elaborate wisdoms but foreground wisdom’s resistance to capture: paper—and the wisdom inscribed on it—is always frail and turns to scraps. Even so, by foregrounding the frailty of paper, my works remake conditional truths into a more resilient kind of knowledge.
-  </p>
-  <p class="body">
-    Many of my motifs reflect my lifetime experience of crafts, humanistic education, and existential dread. Threads and looms, as in Corps Féminine and Arachne, suggest the paradox between female experience and abstraction. Gates and doors, like those in The Ethiopian Gate and both Dream works, weigh safety against closure. By cutting apart the canon and re-stitching it, I remake conditional truths into working knowledge. Like all papers, my works are meant to be read, handled, and doubted.
-  </p>
-</section>
+    <section aria-labelledby="statement">
+      <p id="statement" class="body">
+        I make minutely hand-cut paper collages that read as illuminated pages from books that do not exist—part sacred text, part guide for living. Working from diverse printed materials, I cut and place thousands of tiny paper pieces to illuminate grief, desire, literature, and history as objects of ceremony and study. 
+      </p>
+      <p class="body">
+        Over six years I have composed 23 works—each complete in itself, yet together reading as an unbound manuscript for the education of “enlightened womanhood”, my revision of classical education. For instance, The Demon of History elaborates history as the doomed search for an origin rather than as a series of events. Since enlightened womanhood requires engagement with the real world, other works such as The Artist at Home and Conjugal Felicity contain accounts of and advice for daily life. Each work layers codes, allusions and patterns to show its subject as a system of full but elliptical discourses.
+      </p>
+      <p class="body">
+        With rich borders, marginalia, and textual annotations, my collages clearly reference illuminated Medieval manuscripts. These lavish books were not personal documents, but sought to stabilize wisdom. My works also elaborate wisdoms but foreground wisdom’s resistance to capture: paper—and the wisdom inscribed on it—is always frail and turns to scraps. Even so, by foregrounding the frailty of paper, my works remake conditional truths into a more resilient kind of knowledge.
+      </p>
+      <p class="body">
+        Many of my motifs reflect my lifetime experience of crafts, humanistic education, and existential dread. Threads and looms, as in Corps Féminine and Arachne, suggest the paradox between female experience and abstraction. Gates and doors, like those in The Ethiopian Gate and both Dream works, weigh safety against closure. By cutting apart the canon and re-stitching it, I remake conditional truths into working knowledge. Like all papers, my works are meant to be read, handled, and doubted.
+      </p>
+    </section>
 
     <div class="spacer"></div>
 
@@ -60,9 +80,11 @@
     </nav>
   </main>
 
-  <footer>© 2025 Trudi Connolly</footer>
+  <footer>
+    © 2025 Trudi Connolly. All rights reserved. · 
+    <a href="mailto:Trudi@TrudiConnolly.com">contact</a>
+  </footer>
 
-  <!-- Optional: lightweight structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trudi Connolly — Illuminations / Sacred Paper</title>
   <meta name="description" content="A selection of cut-paper collages by Trudi Connolly: Illuminations / Sacred Paper.">
-  <meta name="theme-color" content="#EEEEEE">
+  <meta name="theme-color" content="#282420">
 
   <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon-180x180.png" sizes="180x180">
@@ -16,7 +16,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root { --bg:#eee; --ink:#111; --muted:#6c6c6c; --accent:#d93a2f; --link:#3e4a5e; --card:#fff; }
+    :root {
+      /* --- Warm "Sepia" Dark Theme --- */
+      --bg:#282420;      /* Very dark, warm brown */
+      --ink:#dcd8d1;     /* Soft, warm off-white */
+      --muted:#948f88;   /* Muted, warm grey */
+      --accent:#d15a45; /* Softer, terracotta red */
+      --link:#c58a47;    /* Muted gold/ochre */
+      --card:#3a3530;    /* Dark, warm grey-brown */
+    }
     * { box-sizing: border-box; }
     body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif; }
     a { color:var(--link); text-decoration:none; }
@@ -35,20 +43,23 @@
       box-shadow:0 1px 2px rgba(0,0,0,.06);
       transition:transform .08s ease-in-out, box-shadow .12s ease-in-out;
     }
-    .card:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(0,0,0,.08); }
+    .card:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(0,0,0,.15); }
     .card > a { position:absolute; inset:0; display:block; }
 
     .thumb { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 
     .meta {
       position:absolute; left:0; right:0; bottom:0;
-      background:rgba(255,255,255,.85); backdrop-filter:blur(2px);
+      background:rgba(40, 36, 32, 0.8); /* Warm, semi-transparent background */
+      backdrop-filter:blur(2px);
       padding:.5rem .75rem; font-size:.9rem;
     }
     .title { font-weight:600; }
     .no { color:var(--muted); margin-left:.35rem; }
 
     footer { color:#9a9a9a; font-size:.85rem; text-align:center; padding:2rem 1rem 3rem; }
+    footer a { color: inherit; } /* Makes footer links match footer text color */
+    footer a:hover { color: var(--accent); } /* Highlights on hover */
 
     @media (max-width:420px) { h1 { font-size:2rem; } .series{font-size:1.1rem;} }
   </style>
@@ -104,7 +115,7 @@
             <img class="thumb" src="${thumbSrc}" alt="${title}" loading="lazy">
             <div class="meta">
               <span class="title">${title}</span>
-              ${number ? `<span class="no">No. ${number}</span>` : ''}
+              ${number ? `<span class="no"># ${number}</span>` : ''}
             </div>
           </a>
         </article>
