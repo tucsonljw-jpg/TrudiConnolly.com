@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solo Exhibition — Trudi Connolly</title>
+  <meta name="description" content="Join Trudi Connolly for the opening reception of her solo exhibition at Pima Community College." />
+  <meta name="theme-color" content="#282420">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* --- Warm "Sepia" Dark Theme --- */
+      --bg:#282420;
+      --ink:#dcd8d1;
+      --muted:#948f88;
+      --accent:#d15a45;
+      --link:#c58a47;
+      --card:#3a3530; 
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+    header,main,footer{max-width:960px;margin:0 auto;padding:1rem}
+    header{padding-top:2rem}
+    main#main{padding-top:2rem;} /* Added breathing room */
+    h1{font:700 2rem/1.2 Inter,sans-serif;margin:.25rem 0}
+    .series{font:italic 1.1rem "Crimson Text",serif;color:var(--accent)}
+    .meta{color:var(--muted);margin:.25rem 0 1rem}
+    .toolbar{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0}
+    .toolbar a{color:var(--link);text-decoration:none;border:1px solid var(--card);border-radius:.5rem;padding:.4rem .7rem; transition: all 0.2s ease;}
+    .toolbar a:hover{color:var(--accent);border-color:var(--accent)}
+    
+    /* Highlighted Action Button for RSVP */
+    .toolbar a.primary-btn { background: var(--link); color: var(--bg); border-color: var(--link); font-weight: 600; }
+    .toolbar a.primary-btn:hover { background: #d49c59; border-color: transparent; }
+
+    figure{margin:1rem 0}
+    
+    /* Added opacity here to blend the white background slightly into the dark theme */
+    img.hero{display:block;max-width:100%;height:auto;border-radius:.5rem;background:var(--card); border: 1px solid var(--card); opacity: 0.93;}
+    
+    figcaption{font:1.05rem/1.6 "Crimson Text",serif;margin:.75rem 0 0;white-space:pre-wrap; color: var(--ink);}
+    figcaption strong { color: var(--accent); font-weight: 600; font-style: italic; }
+    
+    footer{color:#9a9a9a;font-size:.85rem;text-align:center;padding:2rem 1rem 3rem}
+    footer a { color: inherit; }
+    footer a:hover { color: var(--accent); }
+
+    /* --- Reduce button size on mobile screens --- */
+    @media (max-width:768px) {
+      .toolbar a.primary-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="series">Illuminations / Sacred Paper</div>
+    <h1 id="title">Solo Exhibition</h1>
+    <div id="meta" class="meta">Opening Reception: Wednesday, September 30, 2026</div>
+    <nav class="toolbar" aria-label="Page navigation">
+      <a href="index.html">← Back to Gallery</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <figure>
+      <img id="hero" class="hero" src="images/invitation.jpg" alt="Exhibition Invitation for Trudi Connolly" />
+    </figure>
+
+    <div class="toolbar">
+      <a href="mailto:trudieconnolly@gmail.com?subject=RSVP:%20Trudi%20Connolly%20Exhibition%20Opening" class="primary-btn">RSVP for Cake! →</a>
+      
+      <!-- The download attribute is still here as a fallback, now with target="_blank" -->
+      <a id="download" href="Trudi_Connolly_Exhibition_Invitation_2026.pdf" download="Trudi_Connolly_Exhibition_Invitation_2026.pdf" target="_blank">Download Invitation (PDF)</a>
+    </div>
+
+    <!-- Pricing Inquiry Note -->
+    <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--muted); font-style: italic; text-align: center;">
+      For pricing inquiries regarding original works or prints from this exhibition, please <a href="mailto:trudieconnolly@gmail.com?subject=Artwork%20Pricing%20Inquiry" style="color: var(--link); text-decoration: underline;">contact the artist</a>.
+    </p>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> Trudi Connolly. All rights reserved. · 
+    <a href="mailto:Trudi@TrudiConnolly.com">contact</a> · 
+    <a href="about.html">artist’s statement</a>
+  </footer>
+
+  <script>
+    // Set the current year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Force the browser to explicitly download the PDF file
+    document.getElementById("download").addEventListener("click", function(e) {
+      e.preventDefault(); // Stop the browser from navigating to the PDF
+      
+      const link = this;
+      const fileUrl = link.href;
+      const fileName = link.getAttribute("download");
+
+      // Fetch the file as a raw blob of data
+      fetch(fileUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          // Create a temporary, hidden link to trigger the data download
+          const blobUrl = window.URL.createObjectURL(blob);
+          const tempLink = document.createElement("a");
+          tempLink.style.display = "none";
+          tempLink.href = blobUrl;
+          tempLink.download = fileName;
+          
+          document.body.appendChild(tempLink);
+          tempLink.click(); // Programmatically click the hidden link
+          
+          // Clean up the temporary link
+          document.body.removeChild(tempLink);
+          window.URL.revokeObjectURL(blobUrl);
+        })
+        .catch(err => {
+          // Fallback just in case the fetch fails 
+          window.open(fileUrl, '_blank');
+        });
+    });
+  </script>
+</body>
+</html>

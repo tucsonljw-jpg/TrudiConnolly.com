@@ -29,8 +29,11 @@
     .toolbar a{color:var(--link);text-decoration:none;border:1px solid var(--card);border-radius:.5rem;padding:.4rem .7rem}
     .toolbar a:hover{color:var(--accent);border-color:var(--accent)}
     figure{margin:1rem 0}
-    img.hero{display:block;max-width:100%;height:auto;border-radius:.5rem;background:var(--card)}
-    figcaption{font:italic 1.05rem "Crimson Text",serif;margin:.75rem 0 0;white-space:pre-wrap}
+    
+    img.hero{display:block;max-width:100%;height:auto;max-height:80vh;object-fit:contain;border-radius:.5rem;background:var(--card)}
+    
+    figcaption{font:italic 1.25rem/1.6 "Crimson Text",serif;margin:.75rem 0 0;white-space:pre-wrap}
+    
     footer{color:#9a9a9a;font-size:.85rem;text-align:center;padding:2rem 1rem 3rem}
     footer a { color: inherit; }
     footer a:hover { color: var(--accent); }
@@ -43,12 +46,14 @@
     const qs   = new URLSearchParams(location.search);
     const slug = qs.get('slug');
 
-    function alpha(list){
+    // Updated to sort by number instead of alphabetically
+    function getSortedWorks(list){
       return Object.entries(list).map(([s,d])=>{
         const title = d.title || s.replaceAll('_',' ');
-        return {slug:s, ...d, title, key:title.toLowerCase()};
-      }).sort((a,b)=>a.key.localeCompare(b.key, undefined, {sensitivity:'base'}));
+        return {slug:s, ...d, title};
+      }).sort((a,b) => a.number - b.number);
     }
+    
     function neighbors(list, slug){
       const i = list.findIndex(x=>x.slug===slug);
       if (i<0) return {prev:'#', next:'#'};
@@ -57,6 +62,7 @@
       return { prev:`artwork.html?slug=${encodeURIComponent(prev)}`,
                next:`artwork.html?slug=${encodeURIComponent(next)}` };
     }
+    
     function setHead(title, meta){
       document.getElementById('doc-title').textContent = `${title} — Trudi Connolly`;
       document.getElementById('meta-desc').setAttribute('content',(meta?meta+' · ':'')+'by Trudi Connolly.');
@@ -69,14 +75,13 @@
       const data = ARTWORKS[slug];
       if (!data) return;
 
-      const list = alpha(ARTWORKS);
+      const list = getSortedWorks(ARTWORKS);
       const {prev, next} = neighbors(list, slug);
       document.getElementById('prevLink').href = prev;
       document.getElementById('nextLink').href = next;
 
       const title = data.title || slug.replaceAll('_',' ');
-      // UPDATED LINE: Replaced data.year with the artwork number
-      const meta  = [data.medium, data.size, data.number ? `#${data.number}` : null].filter(Boolean).join(' · ');
+      const meta  = [data.medium, data.size, data.year].filter(Boolean).join(' · ');
       setHead(title, meta);
 
       document.getElementById('title').textContent = title;
@@ -106,7 +111,7 @@
     <div id="meta" class="meta"></div>
     <nav class="toolbar" aria-label="Artwork navigation">
       <a id="prevLink" href="#">← Previous</a>
-      <a href="index.html">Gallery Index</a>
+      <a href="index.html">Gallery</a>
       <a id="nextLink" href="#">Next →</a>
     </nav>
   </header>
@@ -117,12 +122,12 @@
       <figcaption id="caption"></figcaption>
     </figure>
     <div class="toolbar">
-      <a id="download" href="#" download>Download Full Resolution</a>
+      <a id="download" href="#" download>Open Full Resolution</a>
     </div>
   </main>
 
   <footer>
-    © 2025 Trudi Connolly. All rights reserved. · 
+    © 2026 Trudi Connolly. All rights reserved. · 
     <a href="mailto:Trudi@TrudiConnolly.com">contact</a> · 
     <a href="about.html">artist’s statement</a>
   </footer>

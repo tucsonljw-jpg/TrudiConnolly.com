@@ -21,7 +21,7 @@
       --bg:#282420;      /* Very dark, warm brown */
       --ink:#dcd8d1;     /* Soft, warm off-white */
       --muted:#948f88;   /* Muted, warm grey */
-      --accent:#d15a45; /* Softer, terracotta red */
+      --accent:#d15a45;  /* Softer, terracotta red */
       --link:#c58a47;    /* Muted gold/ochre */
       --card:#3a3530;    /* Dark, warm grey-brown */
     }
@@ -32,10 +32,77 @@
 
     header, main, footer { max-width:1200px; margin:0 auto; padding:1rem; }
     header { padding-top:2rem; }
+    main { padding-top:2.5rem; } 
+    
     h1 { font:700 2.5rem/1.1 Inter,sans-serif; margin:.25rem 0; }
     .series { font:italic 1.25rem "Crimson Text",serif; color:var(--accent); }
 
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.25rem; margin-top:1rem; }
+    /* --- Hero Feature Block Styles --- */
+    .hero-feature {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--card);
+      border-radius: 0.75rem;
+      margin-bottom: 3.5rem; 
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      border: 1px solid var(--card);
+    }
+    .hero-image-wrapper {
+      flex: 1 1 400px; 
+      min-height: 300px;
+    }
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.93; 
+      transition: opacity 0.3s ease;
+    }
+    .hero-image-wrapper img:hover {
+      opacity: 1;
+    }
+    .hero-content {
+      flex: 1 1 300px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-content h2 {
+      font: italic 2.2rem/1.2 "Crimson Text", serif;
+      color: var(--accent);
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+    }
+    .hero-content p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .hero-content strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .hero-btn {
+      align-self: flex-start;
+      display: inline-block;
+      background: var(--link);
+      color: var(--bg);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: background 0.2s ease;
+    }
+    .hero-btn:hover {
+      background: #d49c59;
+      color: var(--bg);
+    }
+
+    /* --- Grid Styles --- */
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:2rem; margin-top:1rem; }
 
     .card {
       position:relative; width:100%; aspect-ratio:1/1;
@@ -50,7 +117,7 @@
 
     .meta {
       position:absolute; left:0; right:0; bottom:0;
-      background:rgba(40, 36, 32, 0.8); /* Warm, semi-transparent background */
+      background:rgba(40, 36, 32, 0.88);
       backdrop-filter:blur(2px);
       padding:.5rem .75rem; font-size:.9rem;
     }
@@ -63,16 +130,33 @@
       position: relative; display: flex; flex-direction: column;
       justify-content: space-between; height: 100%; padding: 1.25rem;
     }
-    .statement-title { font: italic 1.2rem "Crimson Text", serif; color: var(--accent); margin-bottom: 0.5rem; }
+    .statement-title { font: italic 3rem/1.1 "Crimson Text", serif; color: var(--accent); margin-bottom: 0.5rem; }
     .statement-body { font-size: 0.95rem; line-height: 1.6; margin: 0; }
     .statement-cta { font-weight: 600; color: var(--link); margin-top: 1rem; align-self: start; }
     #statement-card:hover .statement-cta { color: var(--accent); }
     /* --- End custom styles --- */
 
     footer { color:#9a9a9a; font-size:.85rem; text-align:center; padding:2rem 1rem 3rem; }
-    footer a { color: inherit; } /* Makes footer links match footer text color */
-    footer a:hover { color: var(--accent); } /* Highlights on hover */
+    footer a { color: inherit; }
+    footer a:hover { color: var(--accent); }
 
+    @media (max-width:768px) {
+      .hero-content { padding: 1.5rem; }
+      .hero-image-wrapper { min-height: 250px; }
+      
+      /* --- Hides the text on mobile --- */
+      .hero-content h2,
+      .hero-content p {
+        display: none;
+      }
+      
+      /* --- Make RSVP button smaller on mobile --- */
+      .hero-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+    }
     @media (max-width:420px) { h1 { font-size:2rem; } .series{font-size:1.1rem;} }
   </style>
 </head>
@@ -83,12 +167,36 @@
   </header>
 
   <main>
+    <!-- Hero Feature Block -->
+    <section class="hero-feature" aria-labelledby="hero-title">
+      <div class="hero-image-wrapper">
+        <a href="exhibition.html">
+          <img src="images/invitation.jpg" alt="Dream II: Interior Exhibition Invitation" loading="lazy">
+        </a>
+      </div>
+      <div class="hero-content">
+        <h2 id="hero-title">Solo Exhibition</h2>
+        <p>
+          <strong>Opening Reception:</strong><br>
+          Wednesday, September 30, 2026<br>
+          4:00 PM – 6:00 PM
+        </p>
+        <p>
+          <strong>Location:</strong><br>
+          Pima Community College<br>
+          Desert Vista Campus Gallery<br>
+          5901 South Calle Santa Cruz
+        </p>
+        <a href="mailto:trudieconnolly@gmail.com?subject=RSVP:%20Trudi%20Connolly%20Exhibition%20Opening" class="hero-btn">RSVP for Cake! →</a>
+      </div>
+    </section>
+
     <section class="grid" aria-label="Gallery">
       </section>
   </main>
 
   <footer>
-    © 2025 Trudi Connolly. All rights reserved. ·
+    © 2026 Trudi Connolly. All rights reserved. ·
     <a href="mailto:Trudi@TrudiConnolly.com">contact</a> ·
     <a href="about.html">artist’s statement</a>
   </footer>
@@ -102,50 +210,40 @@
     }
 
     const grid = document.querySelector('.grid');
-    grid.innerHTML = ''; // Clear any fallback content
+    grid.innerHTML = ''; 
 
-    // --- NEW: Create and add the Artist's Statement card first ---
+    // 1. The Artist Statement Card
     const statementCardHTML = `
       <article class="card" id="statement-card">
         <a href="about.html">
           <div>
-            <h3 class="statement-title">Artist’s Statement</h3>
-            <p class="statement-body">
-              I make minutely hand-cut paper collages that read as illuminated pages from books that do not exist—part sacred text, part guide for living...
-            </p>
+            <h3 class="statement-title">Artist’s<br>Statement</h3>
           </div>
-          <div class="statement-cta">Read More →</div>
+          <div class="statement-cta">Read →</div>
         </a>
       </article>
     `;
     grid.insertAdjacentHTML('beforeend', statementCardHTML);
-    // --- End new section ---
 
-
-    // Sort artworks alphabetically by title for a consistent order
+    // 2. The Art Cards (Now sorted by number):
     const sortedWorks = Object.entries(ARTWORKS).map(([slug, data]) => {
       const title = data.title || slug.replaceAll('_', ' ');
-      return { slug, ...data, title, key: title.toLowerCase() };
-    }).sort((a, b) => a.key.localeCompare(b.key, undefined, { sensitivity: 'base' }));
+      return { slug, ...data, title };
+    }).sort((a, b) => a.number - b.number);
 
-    // Loop through the sorted artworks and create a card for each
     for (const art of sortedWorks) {
       const slug = art.slug;
       const title = art.title;
       const number = art.number;
       const thumbSrc = `images/${slug}_1000.jpg`;
-
-      // Use the new, correct URL format
       const linkHref = `artwork.html?slug=${encodeURIComponent(slug)}`;
 
-      // Create the HTML for the card
       const cardHTML = `
         <article class="card">
           <a href="${linkHref}">
             <img class="thumb" src="${thumbSrc}" alt="${title}" loading="lazy">
             <div class="meta">
               <span class="title">${title}</span>
-              ${number ? `<span class="no"># ${number}</span>` : ''}
             </div>
           </a>
         </article>
