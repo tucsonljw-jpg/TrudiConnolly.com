@@ -218,6 +218,24 @@ const ARTWORKS = {
     year: "2025",
     caption: "",
     number: 25
+  },
+
+    Niece: {
+    title: "Niece",
+    medium: "",
+    size: "",
+    year: "2026",
+    caption: "",
+    number: 26
+  },
+
+    Withdrawal: {
+    title: "Withdrawal",
+    medium: "",
+    size: "",
+    year: "2026",
+    caption: "",
+    number: 27
   }
 
 };
